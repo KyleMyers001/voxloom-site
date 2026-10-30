@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 import test from 'node:test';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
-const origin = 'https://voxloom-site-seven.vercel.app';
+const origin = 'https://voxloom.vercel.app';
 const pages = ['index.html', 'download.html', 'privacy.html', 'changelog.html'];
 
 for (const page of pages) {
