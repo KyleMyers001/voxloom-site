@@ -21,15 +21,15 @@ The build copies only the four HTML pages, two CSS files, favicons, touch icon a
 
 ## Checks
 
-`npm run check` validates page metadata, local links and fragments, download-availability copy, brand colors, the public-file allowlist and unfinished content markers. The repository's CI runs these checks as well.
+`npm run check` validates page metadata, local links and fragments, download and release-link copy, brand colors, the public-file allowlist and unfinished content markers. The repository's CI runs these checks as well.
 
 Run the checks and build before submitting a change. If a public URL changes, update canonical URLs, social-image URLs, footer labels and the corresponding tests together.
 
 ## Content updates
 
-There is no public app download yet. Homepage download buttons lead to an availability page, which links to the app's public releases listing.
+The site points to the published Voxloom v0.2.0 beta release on GitHub Releases. Download buttons link directly to the release's universal `.dmg`; the download page also links the zipped `.app`, `SHA256SUMS`, all releases and GitHub Issues for feedback.
 
-When a public release becomes available, update download links, version information, release notes, installation guidance and the corresponding tests. Keep feature descriptions and privacy information aligned with the desktop app's actual behavior.
+When a new release is published, update the asset URLs and version in `index.html`, `download.html` and `changelog.html`, add the release notes to the changelog, and update the corresponding tests. Keep the minimum macOS version aligned with the app's `bundle.macOS.minimumSystemVersion`. Keep feature descriptions and privacy information aligned with the desktop app's actual behavior.
 
 ## Product text
 

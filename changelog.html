@@ -37,9 +37,39 @@
   </span>
 </nav>
 <main id="main" class="wrap doc">
+  <span class="badge beta">Beta</span>
   <h1 class="h">Changelog</h1>
-  <p class="lead">Coming with the first signed release.</p>
-  <p class="ph">No public release yet. Release notes will appear on <a href="https://github.com/KyleMyers001/voxloom/releases">GitHub Releases</a>.</p>
+  <p class="lead">Release notes for Voxloom, taken from the GitHub release. Voxloom is a work in progress.</p>
+  <section class="card" aria-labelledby="v020-h">
+    <small>2026-11-03 · BETA</small><h2 class="h3" id="v020-h">Voxloom v0.2.0</h2>
+    <p>This build is signed with a Developer ID and notarized by Apple.</p>
+    <h3 class="h4">What&rsquo;s changed</h3>
+    <ul>
+      <li>Move marketing website to voxloom-site (<a href="https://github.com/KyleMyers001/voxloom/pull/138">#138</a>)</li>
+      <li>BUS-139: trim trailing silence before Whisper to stop hallucinated &quot;Thank you&quot; (<a href="https://github.com/KyleMyers001/voxloom/pull/132">#132</a>)</li>
+      <li>Keep soft trail-offs the trailing-silence trim cut (BUS-143) (<a href="https://github.com/KyleMyers001/voxloom/pull/137">#137</a>)</li>
+      <li>ci(cleanup-worker): stop CMake probing for OpenSSL (fixes red main on macOS) (<a href="https://github.com/KyleMyers001/voxloom/pull/139">#139</a>)</li>
+      <li>test(worker): widen the prewarm preemption time bound for slow CI runners (<a href="https://github.com/KyleMyers001/voxloom/pull/141">#141</a>)</li>
+      <li>ci(release): stop CMake probing for OpenSSL in the macOS worker build (<a href="https://github.com/KyleMyers001/voxloom/pull/140">#140</a>)</li>
+      <li>feat(shortcut): lone-key tokens and recorder capture (BUS-46 slice 1) (<a href="https://github.com/KyleMyers001/voxloom/pull/142">#142</a>)</li>
+      <li>BUS-46 slice 2: lone-key state machine and macOS listen-only tap (not wired) (<a href="https://github.com/KyleMyers001/voxloom/pull/143">#143</a>)</li>
+      <li>BUS-46 slice 3: wire the lone-key shortcut (arm from settings, edges into the gesture machine, fix L4) (<a href="https://github.com/KyleMyers001/voxloom/pull/144">#144</a>)</li>
+      <li>BUS-156: Copied, press ⌘V when Copy happens in a terminal (<a href="https://github.com/KyleMyers001/voxloom/pull/145">#145</a>)</li>
+      <li>chore: bump version to 0.2.0 (<a href="https://github.com/KyleMyers001/voxloom/pull/146">#146</a>)</li>
+      <li>feat: paste dictation into WezTerm and other terminals (BUS-157) (<a href="https://github.com/KyleMyers001/voxloom/pull/147">#147</a>)</li>
+    </ul>
+    <h3 class="h4">Known limitations</h3>
+    <ul>
+      <li>macOS only (minimum macOS 13.1 (Ventura)); Windows and Linux are not supported yet.</li>
+      <li>No auto-update; download new versions from the Releases page.</li>
+      <li>The Whisper model is not bundled; download it separately.</li>
+    </ul>
+    <div class="row">
+      <a class="btn" href="https://github.com/KyleMyers001/voxloom/releases/download/v0.2.0/Voxloom_0.2.0_macos_universal.dmg">Download v0.2.0 (.dmg)</a>
+      <a class="btn ghost" href="https://github.com/KyleMyers001/voxloom/releases/tag/v0.2.0">Release page</a>
+    </div>
+    <p class="ph">Full changelog: <a href="https://github.com/KyleMyers001/voxloom/compare/v0.1.0...v0.2.0">v0.1.0...v0.2.0</a> · <a href="https://github.com/KyleMyers001/voxloom/releases/download/v0.2.0/SHA256SUMS">SHA256SUMS</a> · <a href="https://github.com/KyleMyers001/voxloom/releases">All releases</a></p>
+  </section>
 </main>
 <footer class="wrap">
   <span class="up">Voxloom</span>

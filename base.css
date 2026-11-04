@@ -55,3 +55,10 @@ code{font:14px ui-monospace,Menlo,monospace;color:#a1a1ad}
   .card{padding:20px}
 }
 .h3{font-size:24px;margin:12px 0 8px;letter-spacing:-.01em}
+.badge.beta{color:#07070b;background:#b6ff3c;border-color:#b6ff3c}
+.card.note{border-color:rgba(182,255,60,.4)}
+.card p a,.doc .ph a{color:#b6ff3c}
+.h4{font-size:18px;margin:20px 0 6px;letter-spacing:-.01em}
+.card .row{margin-top:20px}
+.card li a{color:#b6ff3c}
+.ctas .ph a,.final .ph a{color:#b6ff3c}
