@@ -34,18 +34,19 @@ for (const page of pages) {
 }
 
 const repo = 'https://github.com/KyleMyers001/voxloom';
-const dmg = `${repo}/releases/download/v0.2.0/Voxloom_0.2.0_macos_universal.dmg`;
-const sums = `${repo}/releases/download/v0.2.0/SHA256SUMS`;
+const dmg = `${repo}/releases/download/v0.3.0/Voxloom_0.3.0_macos_universal.dmg`;
+const sums = `${repo}/releases/download/v0.3.0/SHA256SUMS`;
 const read = (page) => readFileSync(resolve(root, page), 'utf8');
 
-test('download page links the v0.2.0 release assets and install steps', () => {
+test('download page is ready for v0.3.0 assets and install steps', () => {
   const html = read('download.html');
-  for (const url of [dmg, sums, `${repo}/releases/download/v0.2.0/Voxloom_0.2.0_macos_universal.app.zip`, `${repo}/releases`, `${repo}/issues`]) {
+  for (const url of [dmg, sums, `${repo}/releases/download/v0.3.0/Voxloom_0.3.0_macos_universal.app.zip`, `${repo}/releases/tag/v0.3.0`, `${repo}/releases`, `${repo}/issues`]) {
     assert.ok(html.includes(`href="${url}"`), `missing ${url}`);
   }
   assert.match(html, /class="badge beta">Beta</);
   assert.match(html, /Work in progress/);
-  assert.match(html, /signed with a Developer ID and notarized by Apple/);
+  assert.match(html, /Download v0\.3\.0 \(\.dmg\)/);
+  assert.match(html, /<code>Voxloom_0\.3\.0_macos_universal\.dmg<\/code>/);
   assert.match(html, /macOS 13\.1 \(Ventura\) or later/);
   assert.match(html, /drag <b>Voxloom<\/b> to Applications/);
   assert.match(html, /Privacy &amp; Security → Microphone/);
@@ -54,23 +55,21 @@ test('download page links the v0.2.0 release assets and install steps', () => {
   assert.match(html, /record the key again/);
 });
 
-test('homepage download buttons use the v0.2.0 DMG and show the beta status', () => {
+test('homepage download buttons and beta label use v0.3.0', () => {
   const html = read('index.html');
   assert.equal(html.split(`href="${dmg}"`).length - 1, 2);
+  assert.equal(html.split('Download v0.3.0 for macOS').length - 1, 2);
+  assert.match(html, /Beta v0\.3\.0/);
   assert.match(html, /class="badge beta">Beta</);
   assert.match(html, /expect rough edges/);
   assert.ok(html.includes(`href="${repo}/issues"`));
 });
 
-test('homepage previews v0.3 without advertising its features as part of v0.2', () => {
+test('homepage presents the launch features without an upcoming-release teaser', () => {
   const html = read('index.html');
-  const preview = html.match(/<section[^>]+aria-labelledby="next-h"[\s\S]*?<\/section>/)?.[0];
-  assert.ok(preview, 'missing upcoming-release section');
-  assert.match(preview, /v0\.3\.0/);
-  assert.match(preview, /In development/);
-  assert.match(preview, /dictionary[\s\S]*case[\s\S]*spacing/i);
-  assert.match(preview, /cleanup[\s\S]*397 MB/i);
-  assert.ok(preview.includes('href="changelog.html#v030-h"'));
+  assert.doesNotMatch(html, /next-h|In development|Next up/);
+  assert.match(html, /dictionary[\s\S]*case[\s\S]*spacing/i);
+  assert.ok(html.includes('href="changelog.html#v030-h"'));
   assert.match(html, /Local cleanup[\s\S]*[Ee]xperimental/);
   assert.match(html, /optional[\s\S]*punctuation[\s\S]*filler words/i);
   assert.match(html, /depending on your retention setting/);
@@ -88,7 +87,7 @@ test('changelog carries the v0.2.0 release notes', () => {
   assert.doesNotMatch(html, /<li>\s*(ci|test)\(/i);
 });
 
-test('install guide separates v0.2 manual cleanup setup from the upcoming download', () => {
+test('install guide describes the v0.3 in-app cleanup download, not manual Import', () => {
   const html = read('download.html');
   const cleanup = html.match(/<section[^>]+aria-labelledby="cleanup-h"[\s\S]*?<\/section>/)?.[0];
   assert.ok(cleanup, 'missing optional cleanup setup');
@@ -96,27 +95,30 @@ test('install guide separates v0.2 manual cleanup setup from the upcoming downlo
   assert.match(cleanup, /Qwen3 0\.6B/);
   assert.match(cleanup, /Q4_K_M/);
   assert.match(cleanup, /397 MB/);
-  assert.match(cleanup, /v0\.2\.0[\s\S]*Import model/);
-  assert.match(cleanup, /v0\.3\.0[\s\S]*Download \(397 MB\)/);
+  assert.match(cleanup, /Download \(397 MB\)/);
+  assert.match(cleanup, /Cancel/);
+  assert.doesNotMatch(cleanup, /Import model|v0\.2|upcoming|in development/i);
   assert.match(cleanup, /Clean up transcripts locally/);
   assert.match(cleanup, /not required for dictation/);
-  assert.ok(cleanup.includes('href="changelog.html#v030-h"'));
 });
 
-test('v0.3 notes are unreleased, cover merged changes only and preserve v0.2 downloads', () => {
+test('v0.3 launch notes cover merged changes and preserve historical v0.2 downloads', () => {
   const html = read('changelog.html');
-  const upcoming = html.match(/<section[^>]+aria-labelledby="v030-h"[\s\S]*?<\/section>/)?.[0];
-  assert.ok(upcoming, 'missing v0.3 release preview');
-  assert.match(upcoming, /UNRELEASED/);
-  assert.match(upcoming, /Voxloom v0\.3\.0/);
-  for (const number of [148, 149, 151, 152]) {
-    assert.ok(upcoming.includes(`href="${repo}/pull/${number}"`), `missing #${number}`);
+  const launch = html.match(/<section[^>]+aria-labelledby="v030-h"[\s\S]*?<\/section>/)?.[0];
+  assert.ok(launch, 'missing v0.3 release notes');
+  assert.match(launch, /Voxloom v0\.3\.0/);
+  for (const number of [148, 149, 151, 152, 154]) {
+    assert.ok(launch.includes(`href="${repo}/pull/${number}"`), `missing #${number}`);
   }
-  assert.doesNotMatch(upcoming, /notarized|2026-11-\d+|\/pull\/(154|155)"/);
+  assert.doesNotMatch(launch, /UNRELEASED|IN DEVELOPMENT|What&rsquo;s coming|notarized|2026-11-\d+|\/pull\/155"/);
+  for (const url of [dmg, sums, `${repo}/releases/tag/v0.3.0`, `${repo}/compare/v0.2.0...v0.3.0`]) {
+    assert.ok(launch.includes(`href="${url}"`), `missing ${url}`);
+  }
   assert.ok(html.indexOf('id="v030-h"') < html.indexOf('id="v020-h"'));
-  for (const page of pages) {
-    assert.doesNotMatch(read(page), /releases\/(download|tag)\/v0\.3/);
-    assert.doesNotMatch(read(page), /Voxloom_0\.3/);
+  assert.ok(html.includes(`href="${repo}/releases/download/v0.2.0/Voxloom_0.2.0_macos_universal.dmg"`));
+  assert.ok(html.includes(`href="${repo}/releases/download/v0.2.0/SHA256SUMS"`));
+  for (const page of ['index.html', 'download.html', 'privacy.html']) {
+    assert.doesNotMatch(read(page), /v0\.2|Voxloom_0\.2|upcoming|in development|next up/i, page);
   }
 });
 
@@ -126,7 +128,7 @@ test('privacy covers both local models, plain-text history and temporary clipboa
   assert.match(html, /Qwen3 0\.6B/);
   assert.match(html, /unsloth\/Qwen3-0\.6B-GGUF/);
   assert.match(html, /SHA-256/);
-  assert.match(html, /v0\.3/);
+  assert.doesNotMatch(html, /upcoming|import it/i);
   assert.match(html, /raw and final transcript/);
   assert.match(html, /unencrypted/);
   assert.match(html, /retention never deletes/);

@@ -27,21 +27,19 @@ Run the checks and build before submitting a change. If a public URL changes, up
 
 ## Content updates
 
-The site points to the published Voxloom v0.2.0 beta release on GitHub Releases. Download buttons link directly to the release's universal `.dmg`; the download page also links the zipped `.app`, `SHA256SUMS`, all releases and GitHub Issues for feedback.
+This branch prepares the website for Voxloom **v0.3.0**. Download labels, universal DMG/ZIP filenames, checksum links and the current release notes already target v0.3.0. The version and URLs are static HTML, not a runtime lookup of the latest GitHub release. The historical v0.2.0 changelog retains its original asset links.
 
-When a new release is published, update the asset URLs and version in `index.html`, `download.html` and `changelog.html`, add the release notes to the changelog, and update the corresponding tests. Keep the minimum macOS version aligned with the app's `bundle.macOS.minimumSystemVersion`. Keep feature descriptions and privacy information aligned with the desktop app's actual behavior.
+Release changes can be prepared and reviewed before the app release exists. The preview uses the target version's launch copy and URLs; keep the launch PR unmerged until its target assets are public.
 
-### Preparing v0.3.0
+### v0.3.0 merge checklist
 
-The v0.3.0 content is explicitly marked **in development / unreleased**. All app download, checksum and release-page links still target the published v0.2.0 assets. The cleanup guide distinguishes v0.2.0's manual import from v0.3.0's planned in-app download. Local cleanup already exists in v0.2.0; the new part is the download flow.
+- Publish the app's v0.3.0 release, then verify the actual DMG, ZIP and `SHA256SUMS` against the links already in these pages. The filenames follow the app's signed universal packaging convention; their public availability is a release gate, not a local test result.
+- Confirm final feature scope. These notes cover merged app PRs #148, #149, #151, #152 and #154. Do not advertise still-open changes as shipped.
+- Confirm macOS requirements and the actual signing/notarization outcome. The pages do not assert a v0.3.0 notarization result in advance.
+- Add the actual publication date to the v0.3.0 changelog if desired; do not invent it while preparing the release.
+- Run checks, build and desktop/mobile preview, then merge the website PR when the release is ready.
 
-Before turning this preview into release copy:
-
-- Confirm the final app tag and merged feature scope. The preview covers app PRs #148, #149, #151 and #152; do not advertise still-open changes as shipped.
-- Verify the public release, actual asset names, checksums, supported macOS version and signing/notarization status. Do not infer those from the version number or a draft release.
-- Update the download labels, DMG/ZIP/checksum/release links and install filename together. Preserve the historical v0.2.0 changelog and its asset links.
-- Replace the homepage preview with released feature copy; date the v0.3.0 changelog and link the published release and comparison.
-- Align cleanup setup with the final UI, including whether manual Import remains. Update the privacy copy and all version-gating tests to match, then run checks, build and desktop/mobile preview.
+For future releases, update active download labels, asset URLs, install filenames, release notes and tests together. Preserve older changelog sections and their asset links. Keep system requirements, feature descriptions, setup instructions and privacy information aligned with the app.
 
 ## Product text
 
