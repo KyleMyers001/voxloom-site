@@ -20,7 +20,8 @@ a:focus-visible{outline:2px solid #3cf0ff;outline-offset:3px;border-radius:4px}
 .g{background:linear-gradient(90deg,#b6ff3c,#3cf0ff);-webkit-background-clip:text;background-clip:text;color:transparent}
 .badge{display:inline-block;font:600 13px ui-monospace,Menlo,monospace;color:#b6ff3c;border:1px solid rgba(182,255,60,.4);background:rgba(182,255,60,.08);padding:6px 14px;border-radius:999px;margin-bottom:24px}
 /* Placeholder labels. #8b8b98 on #07070b is ~5.9:1 (WCAG AA). */
-.ph{font:13px ui-monospace,Menlo,monospace;color:#8b8b98}
+.ph{font:13px/1.7 ui-monospace,Menlo,monospace;color:#8b8b98}
+.ph a{display:inline-block;padding:6px 0}
 small{font:12px ui-monospace,monospace;color:#b6ff3c;letter-spacing:.1em}
 h3{font-size:24px;margin:12px 0 8px;letter-spacing:-.01em}
 .lead{font-size:20px;color:#a1a1ad;max-width:520px;margin:28px 0 36px}

@@ -39,22 +39,21 @@
 <main id="main" class="wrap doc">
   <span class="badge beta">Beta</span>
   <h1 class="h">Changelog</h1>
-  <p class="lead">Release notes for Voxloom, taken from the GitHub release. Voxloom is a work in progress.</p>
+  <p class="lead">Release notes for Voxloom. Voxloom is a work in progress.</p>
   <section class="card" aria-labelledby="v020-h">
     <small>2026-11-03 · BETA</small><h2 class="h3" id="v020-h">Voxloom v0.2.0</h2>
     <p>This build is signed with a Developer ID and notarized by Apple.</p>
     <h3 class="h4">What&rsquo;s changed</h3>
     <ul>
-      <li>Moved the marketing website into its own repository, voxloom-site (<a href="https://github.com/KyleMyers001/voxloom/pull/138">#138</a>)</li>
       <li>Reduced hallucinated &quot;Thank you&quot; text on silence at the end of a recording: trailing silence is now trimmed before Whisper (<a href="https://github.com/KyleMyers001/voxloom/pull/132">#132</a>)</li>
       <li>Soft trail-offs at the end of a recording are cut off less often by the trailing-silence trim (<a href="https://github.com/KyleMyers001/voxloom/pull/137">#137</a>)</li>
-      <li>Single-key shortcuts: you can record one key (Right ⌥, ⌃, ⌘ or ⇧, or F13–F19) as your dictation shortcut in Settings (<a href="https://github.com/KyleMyers001/voxloom/pull/142">#142</a>, <a href="https://github.com/KyleMyers001/voxloom/pull/143">#143</a>, <a href="https://github.com/KyleMyers001/voxloom/pull/144">#144</a>)</li>
+      <li>Single-key shortcuts: you can record one key (Right ⌥, ⌃, ⌘ or ⇧, or F13–F19) as your dictation shortcut in Settings (needs Input Monitoring) (<a href="https://github.com/KyleMyers001/voxloom/pull/142">#142</a>, <a href="https://github.com/KyleMyers001/voxloom/pull/143">#143</a>, <a href="https://github.com/KyleMyers001/voxloom/pull/144">#144</a>)</li>
       <li>When dictation falls back to Copy in a terminal app, the message now reads &ldquo;Copied. Press ⌘V to paste.&rdquo; (<a href="https://github.com/KyleMyers001/voxloom/pull/145">#145</a>)</li>
       <li>Dictation can now be pasted into WezTerm, Alacritty, kitty, Ghostty and iTerm2 (with Clipboard fallback on) (<a href="https://github.com/KyleMyers001/voxloom/pull/147">#147</a>)</li>
     </ul>
     <h3 class="h4">Known limitations</h3>
     <ul>
-      <li>macOS only (minimum macOS 13.1 (Ventura)); Windows and Linux are not supported yet.</li>
+      <li>macOS 13.1 (Ventura) or later only. Windows and Linux aren&rsquo;t supported yet.</li>
       <li>No auto-update; download new versions from the Releases page.</li>
       <li>The Whisper model is not bundled; download it separately.</li>
     </ul>

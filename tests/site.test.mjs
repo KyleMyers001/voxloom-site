@@ -45,6 +45,7 @@ test('download page links the v0.2.0 release assets and install steps', () => {
   }
   assert.match(html, /class="badge beta">Beta</);
   assert.match(html, /Work in progress/);
+  assert.match(html, /signed with a Developer ID and notarized by Apple/);
   assert.match(html, /macOS 13\.1 \(Ventura\) or later/);
   assert.match(html, /drag <b>Voxloom<\/b> to Applications/);
   assert.match(html, /Privacy &amp; Security → Microphone/);
