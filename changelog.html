@@ -46,12 +46,10 @@
     <h3 class="h4">What&rsquo;s changed</h3>
     <ul>
       <li>Moved the marketing website into its own repository, voxloom-site (<a href="https://github.com/KyleMyers001/voxloom/pull/138">#138</a>)</li>
-      <li>Fixed hallucinated &quot;Thank you&quot; text on silence at the end of a recording: trailing silence is now trimmed before Whisper (<a href="https://github.com/KyleMyers001/voxloom/pull/132">#132</a>)</li>
-      <li>Soft trail-offs at the end of a recording are no longer cut off by the trailing-silence trim (<a href="https://github.com/KyleMyers001/voxloom/pull/137">#137</a>)</li>
-      <li>Settings can now record a single key (Right ⌥, ⌃, ⌘ or ⇧, or F13–F19) as the shortcut (<a href="https://github.com/KyleMyers001/voxloom/pull/142">#142</a>)</li>
-      <li>Added the macOS key listener that single-key shortcuts use (<a href="https://github.com/KyleMyers001/voxloom/pull/143">#143</a>)</li>
-      <li>A single key can now be used as the dictation shortcut (<a href="https://github.com/KyleMyers001/voxloom/pull/144">#144</a>)</li>
-      <li>When dictation falls back to Copy in a terminal app, the message now reads &ldquo;Copied, press ⌘V&rdquo; (<a href="https://github.com/KyleMyers001/voxloom/pull/145">#145</a>)</li>
+      <li>Reduced hallucinated &quot;Thank you&quot; text on silence at the end of a recording: trailing silence is now trimmed before Whisper (<a href="https://github.com/KyleMyers001/voxloom/pull/132">#132</a>)</li>
+      <li>Soft trail-offs at the end of a recording are cut off less often by the trailing-silence trim (<a href="https://github.com/KyleMyers001/voxloom/pull/137">#137</a>)</li>
+      <li>Single-key shortcuts: you can record one key (Right ⌥, ⌃, ⌘ or ⇧, or F13–F19) as your dictation shortcut in Settings (<a href="https://github.com/KyleMyers001/voxloom/pull/142">#142</a>, <a href="https://github.com/KyleMyers001/voxloom/pull/143">#143</a>, <a href="https://github.com/KyleMyers001/voxloom/pull/144">#144</a>)</li>
+      <li>When dictation falls back to Copy in a terminal app, the message now reads &ldquo;Copied. Press ⌘V to paste.&rdquo; (<a href="https://github.com/KyleMyers001/voxloom/pull/145">#145</a>)</li>
       <li>Dictation can now be pasted into WezTerm, Alacritty, kitty, Ghostty and iTerm2 (with Clipboard fallback on) (<a href="https://github.com/KyleMyers001/voxloom/pull/147">#147</a>)</li>
     </ul>
     <h3 class="h4">Known limitations</h3>

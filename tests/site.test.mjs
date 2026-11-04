@@ -50,6 +50,7 @@ test('download page links the v0.2.0 release assets and install steps', () => {
   assert.match(html, /Privacy &amp; Security → Microphone/);
   assert.match(html, /Privacy &amp; Security → Accessibility/);
   assert.match(html, /Privacy &amp; Security → Input Monitoring/);
+  assert.match(html, /record the key again/);
 });
 
 test('homepage download buttons use the v0.2.0 DMG and show the beta status', () => {
@@ -67,6 +68,8 @@ test('changelog carries the v0.2.0 release notes', () => {
   assert.ok(html.includes(`href="${repo}/releases/tag/v0.2.0"`));
   assert.doesNotMatch(html, /Edit before publishing/);
   assert.doesNotMatch(html, /BUS-\d+/);
+  assert.doesNotMatch(html, /fix L4|\(not wired\)/i);
+  assert.doesNotMatch(html, /<li>\s*(ci|test)\(/i);
 });
 
 test('no stale pre-release copy remains', () => {
