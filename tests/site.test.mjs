@@ -33,11 +33,50 @@ for (const page of pages) {
   });
 }
 
-test('download page clearly explains that public builds are not yet available', () => {
-  const html = readFileSync(resolve(root, 'download.html'), 'utf8');
-  assert.match(html, /No public download is available yet/);
-  assert.match(html, /href="https:\/\/github.com\/KyleMyers001\/voxloom\/releases"/);
-  assert.doesNotMatch(html, /href="[^"]+\.dmg"|releases\/latest|Gatekeeper steps/);
+const repo = 'https://github.com/KyleMyers001/voxloom';
+const dmg = `${repo}/releases/download/v0.2.0/Voxloom_0.2.0_macos_universal.dmg`;
+const sums = `${repo}/releases/download/v0.2.0/SHA256SUMS`;
+const read = (page) => readFileSync(resolve(root, page), 'utf8');
+
+test('download page links the v0.2.0 release assets and install steps', () => {
+  const html = read('download.html');
+  for (const url of [dmg, sums, `${repo}/releases/download/v0.2.0/Voxloom_0.2.0_macos_universal.app.zip`, `${repo}/releases`, `${repo}/issues`]) {
+    assert.ok(html.includes(`href="${url}"`), `missing ${url}`);
+  }
+  assert.match(html, /class="badge beta">Beta</);
+  assert.match(html, /Work in progress/);
+  assert.match(html, /signed with a Developer ID and notarized by Apple/);
+  assert.match(html, /macOS 13\.1 \(Ventura\) or later/);
+  assert.match(html, /drag <b>Voxloom<\/b> to Applications/);
+  assert.match(html, /Privacy &amp; Security → Microphone/);
+  assert.match(html, /Privacy &amp; Security → Accessibility/);
+  assert.match(html, /Privacy &amp; Security → Input Monitoring/);
+  assert.match(html, /record the key again/);
+});
+
+test('homepage download buttons use the v0.2.0 DMG and show the beta status', () => {
+  const html = read('index.html');
+  assert.equal(html.split(`href="${dmg}"`).length - 1, 2);
+  assert.match(html, /class="badge beta">Beta</);
+  assert.match(html, /expect rough edges/);
+  assert.ok(html.includes(`href="${repo}/issues"`));
+});
+
+test('changelog carries the v0.2.0 release notes', () => {
+  const html = read('changelog.html');
+  assert.match(html, /Voxloom v0\.2\.0/);
+  assert.ok(html.includes(`href="${repo}/pull/147"`));
+  assert.ok(html.includes(`href="${repo}/releases/tag/v0.2.0"`));
+  assert.doesNotMatch(html, /Edit before publishing/);
+  assert.doesNotMatch(html, /BUS-\d+/);
+  assert.doesNotMatch(html, /fix L4|\(not wired\)/i);
+  assert.doesNotMatch(html, /<li>\s*(ci|test)\(/i);
+});
+
+test('no stale pre-release copy remains', () => {
+  for (const page of pages) {
+    assert.doesNotMatch(read(page), /coming soon|without extra steps|No public (download|release)|not yet available|Once a public build|first signed release/i, page);
+  }
 });
 
 test('build publishes only the website, never local tokens, docs or scripts', () => {

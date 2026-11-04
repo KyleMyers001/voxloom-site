@@ -37,18 +37,22 @@
   </span>
 </nav>
 <main id="main" class="wrap doc">
-  <span class="badge">Free &amp; open source</span>
+  <span class="badge">Free &amp; open source</span> <span class="badge beta">Beta</span>
   <h1 class="h">Download &amp; install</h1>
-  <p class="lead">Voxloom is a macOS app. Public builds will be published on GitHub Releases as a universal <code>.dmg</code>, a zipped <code>.app</code>, and <code>SHA256SUMS</code>.</p>
+  <p class="lead">Voxloom v0.2.0 for macOS is a universal build for Apple silicon and Intel. It is signed with a Developer ID and notarized by Apple.</p>
   <div class="row">
-    <a class="btn" href="https://github.com/KyleMyers001/voxloom/releases">Check releases</a>
-    <a class="btn ghost" href="https://github.com/KyleMyers001/voxloom">View on GitHub</a>
+    <a class="btn" href="https://github.com/KyleMyers001/voxloom/releases/download/v0.2.0/Voxloom_0.2.0_macos_universal.dmg">Download v0.2.0 (.dmg)</a>
+    <a class="btn ghost" href="https://github.com/KyleMyers001/voxloom/releases">All releases</a>
   </div>
-  <p class="ph">No public download is available yet. Voxloom is still in development.</p>
+  <p class="ph">Also on the release: <a href="https://github.com/KyleMyers001/voxloom/releases/download/v0.2.0/Voxloom_0.2.0_macos_universal.app.zip">zipped .app</a> · <a href="https://github.com/KyleMyers001/voxloom/releases/download/v0.2.0/SHA256SUMS">SHA256SUMS</a> · <a href="https://github.com/KyleMyers001/voxloom/releases/tag/v0.2.0">release page</a></p>
+  <section class="card note" aria-labelledby="beta-h">
+    <small>BETA</small><h2 class="h3" id="beta-h">Work in progress</h2>
+    <p>Voxloom is in beta. Expect rough edges, and check that dictation behaves as you expect before relying on it. Found a problem or have feedback? Open an issue on <a href="https://github.com/KyleMyers001/voxloom/issues">GitHub Issues</a>.</p>
+  </section>
   <section class="card" aria-labelledby="req-h">
     <small>REQUIREMENTS</small><h2 class="h3" id="req-h">System requirements</h2>
     <ul>
-      <li>macOS. Windows is not supported.</li>
+      <li>macOS only. Windows and Linux are not supported yet.</li>
       <li>Universal build (Apple silicon and Intel)</li>
       <li>macOS 13.1 (Ventura) or later</li>
       <li>Disk space for a Whisper model: Tiny (English) ~78 MB or Base (English) ~148 MB</li>
@@ -56,20 +60,24 @@
     </ul>
   </section>
   <section class="card" aria-labelledby="inst-h">
-    <small>SETUP</small><h2 class="h3" id="inst-h">Once a public build is available</h2>
+    <small>SETUP</small><h2 class="h3" id="inst-h">Install steps</h2>
     <ol>
-      <li>Download the <code>.dmg</code> and drag <b>Voxloom</b> into Applications.</li>
-      <li>Follow the signing and installation notes included with that release, then open Voxloom.</li>
-      <li>In Settings, choose a Whisper model and download it. Downloads only happen when you start them.</li>
+      <li>Download <code>Voxloom_0.2.0_macos_universal.dmg</code> from the button above.</li>
+      <li>Optional: check the download against <a href="https://github.com/KyleMyers001/voxloom/releases/download/v0.2.0/SHA256SUMS">SHA256SUMS</a> by running <code>shasum -a 256 -c SHA256SUMS --ignore-missing</code> in the folder that holds both files.</li>
+      <li>Open the <code>.dmg</code> and drag <b>Voxloom</b> to Applications.</li>
+      <li>Open Voxloom from Applications.</li>
+      <li>The Whisper model is not bundled. In Settings, choose a model and download it. Downloads only happen when you start them.</li>
       <li>Grant the permissions below.</li>
       <li>Hold <b>Control + Shift + Space</b> (the default, changeable in Settings), speak, release.</li>
     </ol>
+    <p class="ph">There is no auto-update. Download new versions from <a href="https://github.com/KyleMyers001/voxloom/releases">Releases</a>.</p>
   </section>
   <section class="card" aria-labelledby="perm-h">
     <small>PERMISSIONS</small><h2 class="h3" id="perm-h">macOS permissions</h2>
     <ul>
-      <li><b>Microphone</b>: to record while you hold the shortcut. System Settings → Privacy &amp; Security → Microphone.</li>
-      <li><b>Accessibility</b>: to insert text into the focused field. Without it, Voxloom can copy the text to your clipboard instead, if clipboard fallback is enabled.</li>
+      <li><b>Microphone</b>: to record while you hold the shortcut. macOS asks the first time you dictate. Voxloom should then appear by name under System Settings → Privacy &amp; Security → Microphone.</li>
+      <li><b>Accessibility</b>: to insert text into the focused field. Enable Voxloom under System Settings → Privacy &amp; Security → Accessibility. Without it, Voxloom can copy the text to your clipboard instead, if clipboard fallback is enabled.</li>
+      <li><b>Input Monitoring</b>: only needed if you use a single key as your shortcut. macOS asks when you save one in Settings. Allow Voxloom under System Settings → Privacy &amp; Security → Input Monitoring, then record the key again; relaunch Voxloom if that doesn&rsquo;t help. Until then Voxloom keeps your previous shortcut. The default Control + Shift + Space shortcut does not need it.</li>
     </ul>
   </section>
 </main>
