@@ -27,9 +27,21 @@ Run the checks and build before submitting a change. If a public URL changes, up
 
 ## Content updates
 
-The site points to the published Voxloom v0.2.0 beta release on GitHub Releases. Download buttons link directly to the release's universal `.dmg`; the download page also links the zipped `.app`, `SHA256SUMS`, all releases and GitHub Issues for feedback.
+The site targets the published Voxloom **v0.3.0** release, dated November 4, 2026. Download labels, universal DMG/ZIP filenames, checksum links and the current release notes target v0.3.0. The version and URLs are static HTML, not a runtime lookup of the latest GitHub release. The historical v0.2.0 changelog retains its original asset links.
 
-When a new release is published, update the asset URLs and version in `index.html`, `download.html` and `changelog.html`, add the release notes to the changelog, and update the corresponding tests. Keep the minimum macOS version aligned with the app's `bundle.macOS.minimumSystemVersion`. Keep feature descriptions and privacy information aligned with the desktop app's actual behavior.
+Release changes can be prepared and reviewed before the app release exists. The preview uses the target version's launch copy and URLs; keep the launch PR unmerged until its target assets are public.
+
+### Release validation
+
+Before merging future launch updates:
+
+- Verify the public DMG, ZIP, `SHA256SUMS`, release page and comparison links. Check downloaded artifacts against the published checksums.
+- Confirm the final feature scope against the tagged app release. The v0.3.0 notes cover merged app PRs #148, #149, #151, #152 and #154; do not advertise still-open changes as shipped.
+- Confirm system requirements and validate signing/notarization on the actual artifacts before asserting them in the pages.
+- Add the actual publication date to the changelog; do not invent it while preparing a release.
+- Run checks, build and desktop/mobile preview before merging.
+
+For future releases, update active download labels, asset URLs, install filenames, release notes and tests together. Preserve older changelog sections and their asset links. Keep system requirements, feature descriptions, setup instructions and privacy information aligned with the app.
 
 ## Product text
 

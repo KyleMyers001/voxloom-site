@@ -34,18 +34,19 @@ for (const page of pages) {
 }
 
 const repo = 'https://github.com/KyleMyers001/voxloom';
-const dmg = `${repo}/releases/download/v0.2.0/Voxloom_0.2.0_macos_universal.dmg`;
-const sums = `${repo}/releases/download/v0.2.0/SHA256SUMS`;
+const dmg = `${repo}/releases/download/v0.3.0/Voxloom_0.3.0_macos_universal.dmg`;
+const sums = `${repo}/releases/download/v0.3.0/SHA256SUMS`;
 const read = (page) => readFileSync(resolve(root, page), 'utf8');
 
-test('download page links the v0.2.0 release assets and install steps', () => {
+test('download page is ready for v0.3.0 assets and install steps', () => {
   const html = read('download.html');
-  for (const url of [dmg, sums, `${repo}/releases/download/v0.2.0/Voxloom_0.2.0_macos_universal.app.zip`, `${repo}/releases`, `${repo}/issues`]) {
+  for (const url of [dmg, sums, `${repo}/releases/download/v0.3.0/Voxloom_0.3.0_macos_universal.app.zip`, `${repo}/releases/tag/v0.3.0`, `${repo}/releases`, `${repo}/issues`]) {
     assert.ok(html.includes(`href="${url}"`), `missing ${url}`);
   }
   assert.match(html, /class="badge beta">Beta</);
   assert.match(html, /Work in progress/);
-  assert.match(html, /signed with a Developer ID and notarized by Apple/);
+  assert.match(html, /Download v0\.3\.0 \(\.dmg\)/);
+  assert.match(html, /<code>Voxloom_0\.3\.0_macos_universal\.dmg<\/code>/);
   assert.match(html, /macOS 13\.1 \(Ventura\) or later/);
   assert.match(html, /drag <b>Voxloom<\/b> to Applications/);
   assert.match(html, /Privacy &amp; Security → Microphone/);
@@ -54,12 +55,25 @@ test('download page links the v0.2.0 release assets and install steps', () => {
   assert.match(html, /record the key again/);
 });
 
-test('homepage download buttons use the v0.2.0 DMG and show the beta status', () => {
+test('homepage download buttons and beta label use v0.3.0', () => {
   const html = read('index.html');
   assert.equal(html.split(`href="${dmg}"`).length - 1, 2);
+  assert.equal(html.split('Download v0.3.0 for macOS').length - 1, 2);
+  assert.match(html, /Beta v0\.3\.0/);
   assert.match(html, /class="badge beta">Beta</);
   assert.match(html, /expect rough edges/);
   assert.ok(html.includes(`href="${repo}/issues"`));
+});
+
+test('homepage presents the launch features without an upcoming-release teaser', () => {
+  const html = read('index.html');
+  assert.doesNotMatch(html, /next-h|In development|Next up/);
+  assert.match(html, /dictionary[\s\S]*case[\s\S]*spacing/i);
+  assert.ok(html.includes('href="changelog.html#v030-h"'));
+  assert.match(html, /Local cleanup[\s\S]*[Ee]xperimental/);
+  assert.match(html, /optional[\s\S]*punctuation[\s\S]*filler words/i);
+  assert.match(html, /depending on your retention setting/);
+  assert.doesNotMatch(html, /Nothing lost\.|Every result saved/);
 });
 
 test('changelog carries the v0.2.0 release notes', () => {
@@ -71,6 +85,61 @@ test('changelog carries the v0.2.0 release notes', () => {
   assert.doesNotMatch(html, /BUS-\d+/);
   assert.doesNotMatch(html, /fix L4|\(not wired\)/i);
   assert.doesNotMatch(html, /<li>\s*(ci|test)\(/i);
+});
+
+test('install guide describes the v0.3 in-app cleanup download, not manual Import', () => {
+  const html = read('download.html');
+  const cleanup = html.match(/<section[^>]+aria-labelledby="cleanup-h"[\s\S]*?<\/section>/)?.[0];
+  assert.ok(cleanup, 'missing optional cleanup setup');
+  assert.match(cleanup, /[Ee]xperimental/);
+  assert.match(cleanup, /Qwen3 0\.6B/);
+  assert.match(cleanup, /Q4_K_M/);
+  assert.match(cleanup, /397 MB/);
+  assert.match(cleanup, /Download \(397 MB\)/);
+  assert.match(cleanup, /Cancel/);
+  assert.doesNotMatch(cleanup, /Import model|v0\.2|upcoming|in development/i);
+  assert.match(cleanup, /Clean up transcripts locally/);
+  assert.match(cleanup, /not required for dictation/);
+});
+
+test('v0.3 launch notes cover merged changes and preserve historical v0.2 downloads', () => {
+  const html = read('changelog.html');
+  const launch = html.match(/<section[^>]+aria-labelledby="v030-h"[\s\S]*?<\/section>/)?.[0];
+  assert.ok(launch, 'missing v0.3 release notes');
+  assert.match(launch, /Voxloom v0\.3\.0/);
+  for (const number of [148, 149, 151, 152, 154]) {
+    assert.ok(launch.includes(`href="${repo}/pull/${number}"`), `missing #${number}`);
+  }
+  assert.doesNotMatch(launch, /UNRELEASED|IN DEVELOPMENT|What&rsquo;s coming|\/pull\/155"/);
+  assert.match(launch, /2026-11-04 · BETA/);
+  assert.match(launch, /signed with a Developer ID and notarized by Apple/);
+  assert.match(read('download.html'), /signed with a Developer ID and notarized by Apple/);
+  for (const url of [dmg, sums, `${repo}/releases/tag/v0.3.0`, `${repo}/compare/v0.2.0...v0.3.0`]) {
+    assert.ok(launch.includes(`href="${url}"`), `missing ${url}`);
+  }
+  assert.ok(html.indexOf('id="v030-h"') < html.indexOf('id="v020-h"'));
+  assert.ok(html.includes(`href="${repo}/releases/download/v0.2.0/Voxloom_0.2.0_macos_universal.dmg"`));
+  assert.ok(html.includes(`href="${repo}/releases/download/v0.2.0/SHA256SUMS"`));
+  for (const page of ['index.html', 'download.html', 'privacy.html']) {
+    assert.doesNotMatch(read(page), /v0\.2|Voxloom_0\.2|upcoming|in development|next up/i, page);
+  }
+});
+
+test('privacy covers both local models, plain-text history and temporary clipboard use', () => {
+  const html = read('privacy.html');
+  assert.doesNotMatch(html, /the only download is a Whisper model|The one download: models/);
+  assert.match(html, /Qwen3 0\.6B/);
+  assert.match(html, /unsloth\/Qwen3-0\.6B-GGUF/);
+  assert.match(html, /SHA-256/);
+  assert.doesNotMatch(html, /upcoming|import it/i);
+  assert.match(html, /raw and final transcript/);
+  assert.match(html, /unencrypted/);
+  assert.match(html, /retention never deletes/);
+  assert.match(html, /clipboard managers/);
+  assert.ok(html.includes(`href="${repo}/blob/main/PRIVACY.md"`));
+  for (const tag of ['name="description"', 'property="og:description"', 'name="twitter:description"']) {
+    assert.ok(html.includes(`<meta ${tag} content="How Voxloom handles your data: transcription and optional cleanup run on your Mac, model downloads are user-started, and history stays local.">`));
+  }
 });
 
 test('no stale pre-release copy remains', () => {
