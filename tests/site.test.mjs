@@ -62,6 +62,21 @@ test('homepage download buttons use the v0.2.0 DMG and show the beta status', ()
   assert.ok(html.includes(`href="${repo}/issues"`));
 });
 
+test('homepage previews v0.3 without advertising its features as part of v0.2', () => {
+  const html = read('index.html');
+  const preview = html.match(/<section[^>]+aria-labelledby="next-h"[\s\S]*?<\/section>/)?.[0];
+  assert.ok(preview, 'missing upcoming-release section');
+  assert.match(preview, /v0\.3\.0/);
+  assert.match(preview, /In development/);
+  assert.match(preview, /dictionary[\s\S]*case[\s\S]*spacing/i);
+  assert.match(preview, /cleanup[\s\S]*397 MB/i);
+  assert.ok(preview.includes('href="changelog.html#v030-h"'));
+  assert.match(html, /Local cleanup[\s\S]*[Ee]xperimental/);
+  assert.match(html, /optional[\s\S]*punctuation[\s\S]*filler words/i);
+  assert.match(html, /depending on your retention setting/);
+  assert.doesNotMatch(html, /Nothing lost\.|Every result saved/);
+});
+
 test('changelog carries the v0.2.0 release notes', () => {
   const html = read('changelog.html');
   assert.match(html, /Voxloom v0\.2\.0/);
@@ -71,6 +86,55 @@ test('changelog carries the v0.2.0 release notes', () => {
   assert.doesNotMatch(html, /BUS-\d+/);
   assert.doesNotMatch(html, /fix L4|\(not wired\)/i);
   assert.doesNotMatch(html, /<li>\s*(ci|test)\(/i);
+});
+
+test('install guide separates v0.2 manual cleanup setup from the upcoming download', () => {
+  const html = read('download.html');
+  const cleanup = html.match(/<section[^>]+aria-labelledby="cleanup-h"[\s\S]*?<\/section>/)?.[0];
+  assert.ok(cleanup, 'missing optional cleanup setup');
+  assert.match(cleanup, /[Ee]xperimental/);
+  assert.match(cleanup, /Qwen3 0\.6B/);
+  assert.match(cleanup, /Q4_K_M/);
+  assert.match(cleanup, /397 MB/);
+  assert.match(cleanup, /v0\.2\.0[\s\S]*Import model/);
+  assert.match(cleanup, /v0\.3\.0[\s\S]*Download \(397 MB\)/);
+  assert.match(cleanup, /Clean up transcripts locally/);
+  assert.match(cleanup, /not required for dictation/);
+  assert.ok(cleanup.includes('href="changelog.html#v030-h"'));
+});
+
+test('v0.3 notes are unreleased, cover merged changes only and preserve v0.2 downloads', () => {
+  const html = read('changelog.html');
+  const upcoming = html.match(/<section[^>]+aria-labelledby="v030-h"[\s\S]*?<\/section>/)?.[0];
+  assert.ok(upcoming, 'missing v0.3 release preview');
+  assert.match(upcoming, /UNRELEASED/);
+  assert.match(upcoming, /Voxloom v0\.3\.0/);
+  for (const number of [148, 149, 151, 152]) {
+    assert.ok(upcoming.includes(`href="${repo}/pull/${number}"`), `missing #${number}`);
+  }
+  assert.doesNotMatch(upcoming, /notarized|2026-11-\d+|\/pull\/(154|155)"/);
+  assert.ok(html.indexOf('id="v030-h"') < html.indexOf('id="v020-h"'));
+  for (const page of pages) {
+    assert.doesNotMatch(read(page), /releases\/(download|tag)\/v0\.3/);
+    assert.doesNotMatch(read(page), /Voxloom_0\.3/);
+  }
+});
+
+test('privacy covers both local models, plain-text history and temporary clipboard use', () => {
+  const html = read('privacy.html');
+  assert.doesNotMatch(html, /the only download is a Whisper model|The one download: models/);
+  assert.match(html, /Qwen3 0\.6B/);
+  assert.match(html, /unsloth\/Qwen3-0\.6B-GGUF/);
+  assert.match(html, /SHA-256/);
+  assert.match(html, /v0\.3/);
+  assert.match(html, /raw and final transcript/);
+  assert.match(html, /unencrypted/);
+  assert.match(html, /retention never deletes/);
+  assert.match(html, /clipboard managers/);
+  assert.ok(html.includes(`href="${repo}/blob/main/PRIVACY.md"`));
+  for (const tag of ['name="description"', 'property="og:description"', 'name="twitter:description"']) {
+    assert.ok(html.includes(`<meta ${tag} content="How Voxloom handles your data: transcription and optional cleanup run on your Mac, model downloads are user-started, and history stays local.">`));
+  }
 });
 
 test('no stale pre-release copy remains', () => {

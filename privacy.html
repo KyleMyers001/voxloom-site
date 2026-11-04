@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Privacy — Voxloom</title>
-  <meta name="description" content="How Voxloom handles your data: speech is transcribed on your Mac, the only download is a Whisper model you choose, and history stays local.">
+  <meta name="description" content="How Voxloom handles your data: transcription and optional cleanup run on your Mac, model downloads are user-started, and history stays local.">
   <link rel="canonical" href="https://voxloom.app/privacy.html">
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -13,7 +13,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Voxloom">
   <meta property="og:title" content="Privacy — Voxloom">
-  <meta property="og:description" content="How Voxloom handles your data: speech is transcribed on your Mac, the only download is a Whisper model you choose, and history stays local.">
+  <meta property="og:description" content="How Voxloom handles your data: transcription and optional cleanup run on your Mac, model downloads are user-started, and history stays local.">
   <meta property="og:url" content="https://voxloom.app/privacy.html">
   <meta property="og:image" content="https://voxloom.app/assets/og.png">
   <meta property="og:image:width" content="1200">
@@ -21,7 +21,7 @@
   <meta property="og:image:alt" content="Voxloom: Your voice. Any app. Zero cloud.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Privacy — Voxloom">
-  <meta name="twitter:description" content="How Voxloom handles your data: speech is transcribed on your Mac, the only download is a Whisper model you choose, and history stays local.">
+  <meta name="twitter:description" content="How Voxloom handles your data: transcription and optional cleanup run on your Mac, model downloads are user-started, and history stays local.">
   <meta name="twitter:image" content="https://voxloom.app/assets/og.png">
   <link rel="stylesheet" href="base.css">
 </head>
@@ -41,17 +41,22 @@
   <h1 class="h">Privacy</h1>
   <p class="lead">Voxloom transcribes speech on your Mac. Here is exactly what touches the network and what stays local.</p>
   <section class="card"><small>TRANSCRIPTION</small><h2 class="h3">Speech-to-text runs locally</h2><p>Audio is transcribed on your Mac with whisper.cpp. Voxloom has no cloud speech-to-text path.</p></section>
-  <section class="card"><small>NETWORK</small><h2 class="h3">The one download: models</h2><p>Whisper model files come from Hugging Face (<code>huggingface.co/ggerganov/whisper.cpp</code>), and only after you choose to download them. There are no silent downloads.</p></section>
+  <section class="card"><small>CLEANUP</small><h2 class="h3">Optional cleanup stays on-device</h2><p>Experimental local cleanup uses Qwen3 0.6B to process your transcript on your Mac. No audio or transcript is sent to a cloud model. If cleanup fails its checks, Voxloom uses the uncleaned transcript.</p></section>
+  <section class="card"><small>NETWORK</small><h2 class="h3">User-started model downloads</h2>
+    <p>Whisper model files come from Hugging Face (<code>ggerganov/whisper.cpp</code>), only after you choose to download them. The optional cleanup model comes from <code>unsloth/Qwen3-0.6B-GGUF</code> on Hugging Face. In v0.2 you download that file yourself and import it; the upcoming v0.3 adds an in-app download.</p>
+    <p>In-app model downloads use pinned revisions and check the exact file size and SHA-256 before installation. There are no silent downloads. Model downloads do not upload your dictation.</p>
+  </section>
   <section class="card"><small>STORAGE</small><h2 class="h3">What's saved, and where</h2>
     <ul>
-      <li><b>History</b>: transcript text, status, duration, model, timestamp and delivery outcome, saved in <code>history.json</code> in the app's data folder on your Mac.</li>
+      <li><b>History</b>: raw and final transcript text, cleanup metadata, status, duration, model, timestamp and delivery outcome, saved as unencrypted JSON in <code>history.json</code> in the app's data folder on your Mac. Other processes running as your user, and backups of the folder, can read it.</li>
       <li><b>Transcript retention</b> setting: Off (no transcripts kept), 30 days, or until deleted.</li>
       <li><b>Word dictionary</b>: <code>dictionary.json</code>. <b>Settings</b>: <code>settings.json</code>. Both are stored locally.</li>
       <li>Recorded audio isn't saved for later. Saved audio retention is not implemented.</li>
+      <li>Upgrade or unreadable-file backups may contain older transcripts; retention never deletes those backups. See the <a href="https://github.com/KyleMyers001/voxloom/blob/main/PRIVACY.md">app privacy documentation</a> for manual deletion details.</li>
     </ul>
   </section>
-  <section class="card"><small>CLIPBOARD</small><h2 class="h3">Copy fallback</h2><p>If inserting text isn't safe and clipboard fallback is enabled, the text is copied to your clipboard. Voxloom never types into password fields and never presses Send.</p></section>
-  <p class="ph">// Open source: verify all of this in the code on GitHub. Questions: <a href="https://github.com/KyleMyers001/voxloom/issues">open a GitHub issue</a>. Last updated: October 29, 2026.</p>
+  <section class="card"><small>CLIPBOARD</small><h2 class="h3">Copy fallback and paste</h2><p>If direct insertion is not possible and Clipboard fallback is enabled, Voxloom can copy the transcript or use a temporary clipboard paste in supported apps. The paste route attempts to restore your previous clipboard unless it has changed. Other apps and clipboard managers may still read the transcript. Turn Clipboard fallback off if that matters to you. Voxloom never types into password fields and never presses Send.</p></section>
+  <p class="ph">// Open source: verify all of this in the code on GitHub. Questions: <a href="https://github.com/KyleMyers001/voxloom/issues">open a GitHub issue</a>. Last updated: November 4, 2026.</p>
 </main>
 <footer class="wrap">
   <span class="up">Voxloom</span>

@@ -40,6 +40,18 @@
   <span class="badge beta">Beta</span>
   <h1 class="h">Changelog</h1>
   <p class="lead">Release notes for Voxloom. Voxloom is a work in progress.</p>
+  <section class="card note" aria-labelledby="v030-h">
+    <small>UNRELEASED · IN DEVELOPMENT</small><h2 class="h3" id="v030-h">Voxloom v0.3.0</h2>
+    <p>These changes are in development for the next beta. The current public download is still <a href="#v020-h">v0.2.0</a>; the final release scope may change.</p>
+    <h3 class="h4">What&rsquo;s coming</h3>
+    <ul>
+      <li>Dictionary spellings are applied to matching words even with local cleanup off: for example, &ldquo;chat gpt&rdquo; becomes <code>ChatGPT</code> when saved that way. Matching handles case, spaces and hyphens; it does not guarantee a fix for every misheard word (<a href="https://github.com/KyleMyers001/voxloom/pull/149">#149</a>).</li>
+      <li>Download the optional Qwen3 0.6B cleanup model from Settings (397 MB), with progress and Cancel, instead of needing to fetch the file by hand. Voxloom checks its size and SHA-256 before use (<a href="https://github.com/KyleMyers001/voxloom/pull/152">#152</a>).</li>
+      <li>Paste dictation into Apple Messages when Clipboard fallback is enabled; Voxloom never presses Send (<a href="https://github.com/KyleMyers001/voxloom/pull/148">#148</a>).</li>
+      <li>Keep the listening pill above a visible Dock (<a href="https://github.com/KyleMyers001/voxloom/pull/151">#151</a>).</li>
+    </ul>
+    <p class="ph">Local cleanup remains optional and experimental. macOS only, no auto-update. <a href="download.html#cleanup-h">Cleanup setup</a> · <a href="https://github.com/KyleMyers001/voxloom/releases">Published releases</a></p>
+  </section>
   <section class="card" aria-labelledby="v020-h">
     <small>2026-11-03 · BETA</small><h2 class="h3" id="v020-h">Voxloom v0.2.0</h2>
     <p>This build is signed with a Developer ID and notarized by Apple.</p>

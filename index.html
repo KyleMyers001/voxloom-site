@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Voxloom — Your voice. Any app. Zero cloud.</title>
-  <meta name="description" content="Voxloom is free, open-source dictation for macOS. Hold a shortcut, speak, and Whisper transcribes on your Mac, straight into the app you're using.">
+  <meta name="description" content="Voxloom is free, open-source dictation for macOS. Transcribe with Whisper and optionally clean up transcripts, all on your Mac.">
   <link rel="canonical" href="https://voxloom.app/">
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -13,7 +13,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Voxloom">
   <meta property="og:title" content="Voxloom — Your voice. Any app. Zero cloud.">
-  <meta property="og:description" content="Voxloom is free, open-source dictation for macOS. Hold a shortcut, speak, and Whisper transcribes on your Mac, straight into the app you're using.">
+  <meta property="og:description" content="Voxloom is free, open-source dictation for macOS. Transcribe with Whisper and optionally clean up transcripts, all on your Mac.">
   <meta property="og:url" content="https://voxloom.app/">
   <meta property="og:image" content="https://voxloom.app/assets/og.png">
   <meta property="og:image:width" content="1200">
@@ -21,7 +21,7 @@
   <meta property="og:image:alt" content="Voxloom: Your voice. Any app. Zero cloud.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Voxloom — Your voice. Any app. Zero cloud.">
-  <meta name="twitter:description" content="Voxloom is free, open-source dictation for macOS. Hold a shortcut, speak, and Whisper transcribes on your Mac, straight into the app you're using.">
+  <meta name="twitter:description" content="Voxloom is free, open-source dictation for macOS. Transcribe with Whisper and optionally clean up transcripts, all on your Mac.">
   <meta name="twitter:image" content="https://voxloom.app/assets/og.png">
   <link rel="stylesheet" href="base.css">
   <link rel="stylesheet" href="home.css">
@@ -60,15 +60,22 @@
     <code>&gt; transcribing locally… <b>Inserted ✓</b></code>
   </div>
 </header>
+<section class="wrap" aria-labelledby="next-h">
+  <div class="card note">
+    <small>IN DEVELOPMENT</small><h2 class="h3" id="next-h">Next up: Voxloom v0.3.0</h2>
+    <p>In development, not the download above: dictionary spelling that fixes case and spacing, plus an in-app download for the optional cleanup model (397 MB). <a href="changelog.html#v030-h">Read the upcoming changes</a>.</p>
+  </div>
+</section>
 <section class="wrap feats" aria-labelledby="feats-h">
   <h2 id="feats-h">Built for people who type all day.</h2>
   <div class="fg">
     <article class="big"><small>01 / LOCAL</small><h3>Whisper, on-device.</h3><p>Speech-to-text runs on your Mac via whisper.cpp. No audio or transcript leaves it without your explicit action. Models download only when you say so.</p></article>
     <article><small>02 / ANYWHERE</small><h3>Types into any field.</h3><p>Text lands in the field focused when transcription finishes. Unsafe? It can Copy instead.</p></article>
     <article><small>03 / GESTURES</small><h3>Hold or latch.</h3><p>Hold-to-talk, or double-tap to latch for longer thoughts.</p></article>
-    <article><small>04 / HISTORY</small><h3>Nothing lost.</h3><p>Every result saved in History on your Mac.</p></article>
-    <article><small>05 / DICTIONARY</small><h3>Your vocabulary.</h3><p>A personal word dictionary that persists between sessions.</p></article>
+    <article class="big"><small>04 / HISTORY</small><h3>Your history. Your choice.</h3><p>Keep transcripts on your Mac, depending on your retention setting, or turn retention off.</p></article>
+    <article class="big"><small>05 / DICTIONARY</small><h3>Your vocabulary.</h3><p>Save names and technical terms in a personal word dictionary. v0.3 adds automatic case and spacing corrections.</p></article>
     <article class="big"><small>06 / GUARDRAILS</small><h3>Polite by default.</h3><p>Never inserts into password fields. Never steals focus. Never presses Send. Every result is labeled Inserted, Copied, Failed or Unverified.</p></article>
+    <article class="big"><small>07 / CLEANUP</small><h3>Local cleanup. Experimental.</h3><p>An optional on-device model fixes punctuation and drops filler words. If cleanup fails its checks, Voxloom uses the uncleaned transcript. <a href="download.html#cleanup-h">Set up local cleanup</a>.</p></article>
   </div>
 </section>
 <section class="wrap final" aria-labelledby="final-h">

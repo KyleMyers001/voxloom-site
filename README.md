@@ -31,6 +31,18 @@ The site points to the published Voxloom v0.2.0 beta release on GitHub Releases.
 
 When a new release is published, update the asset URLs and version in `index.html`, `download.html` and `changelog.html`, add the release notes to the changelog, and update the corresponding tests. Keep the minimum macOS version aligned with the app's `bundle.macOS.minimumSystemVersion`. Keep feature descriptions and privacy information aligned with the desktop app's actual behavior.
 
+### Preparing v0.3.0
+
+The v0.3.0 content is explicitly marked **in development / unreleased**. All app download, checksum and release-page links still target the published v0.2.0 assets. The cleanup guide distinguishes v0.2.0's manual import from v0.3.0's planned in-app download. Local cleanup already exists in v0.2.0; the new part is the download flow.
+
+Before turning this preview into release copy:
+
+- Confirm the final app tag and merged feature scope. The preview covers app PRs #148, #149, #151 and #152; do not advertise still-open changes as shipped.
+- Verify the public release, actual asset names, checksums, supported macOS version and signing/notarization status. Do not infer those from the version number or a draft release.
+- Update the download labels, DMG/ZIP/checksum/release links and install filename together. Preserve the historical v0.2.0 changelog and its asset links.
+- Replace the homepage preview with released feature copy; date the v0.3.0 changelog and link the published release and comparison.
+- Align cleanup setup with the final UI, including whether manual Import remains. Update the privacy copy and all version-gating tests to match, then run checks, build and desktop/mobile preview.
+
 ## Product text
 
 Run `bash scripts/rename.sh "NewName"` to change capitalized product text in root-level HTML and CSS while leaving lowercase app repository URLs unchanged. Reverse with `OLD=NewName bash scripts/rename.sh Voxloom`.
