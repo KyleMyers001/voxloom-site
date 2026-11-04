@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 import test from 'node:test';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
-const origin = 'https://voxloom.vercel.app';
+const origin = 'https://voxloom.app';
 const pages = ['index.html', 'download.html', 'privacy.html', 'changelog.html'];
 
 for (const page of pages) {
@@ -100,4 +100,18 @@ test('favicon retains the app brand colors after migration', () => {
   const svg = readFileSync(resolve(root, 'favicon.svg'), 'utf8');
   for (const color of ['#3cf0ff', '#b6ff3c']) assert.ok(svg.includes(color));
   for (const color of ['#4cf4ff', '#c4ff5a']) assert.ok(!svg.includes(color));
+});
+
+test('no file still points at the old Vercel subdomain', () => {
+  const skip = new Set(['.git', 'node_modules', 'public']);
+  const old = ['voxloom', 'vercel', 'app'].join('.');
+  const walk = (dir) => readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+    if (skip.has(entry.name)) return [];
+    const path = resolve(dir, entry.name);
+    return entry.isDirectory() ? walk(path) : [path];
+  });
+  for (const file of walk(root)) {
+    if (!/\.(html|css|mjs|js|json|md|sh|txt|xml)$/.test(file)) continue;
+    assert.ok(!readFileSync(file, 'utf8').includes(old), `${file} still mentions the old domain`);
+  }
 });
