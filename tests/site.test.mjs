@@ -71,7 +71,7 @@ test('changelog carries the v0.2.0 release notes', () => {
 
 test('no stale pre-release copy remains', () => {
   for (const page of pages) {
-    assert.doesNotMatch(read(page), /coming soon|No public (download|release)|not yet available|Once a public build|first signed release/i, page);
+    assert.doesNotMatch(read(page), /coming soon|without extra steps|No public (download|release)|not yet available|Once a public build|first signed release/i, page);
   }
 });
 
