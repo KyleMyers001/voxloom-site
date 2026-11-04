@@ -110,7 +110,10 @@ test('v0.3 launch notes cover merged changes and preserve historical v0.2 downlo
   for (const number of [148, 149, 151, 152, 154]) {
     assert.ok(launch.includes(`href="${repo}/pull/${number}"`), `missing #${number}`);
   }
-  assert.doesNotMatch(launch, /UNRELEASED|IN DEVELOPMENT|What&rsquo;s coming|notarized|2026-11-\d+|\/pull\/155"/);
+  assert.doesNotMatch(launch, /UNRELEASED|IN DEVELOPMENT|What&rsquo;s coming|\/pull\/155"/);
+  assert.match(launch, /2026-11-04 · BETA/);
+  assert.match(launch, /signed with a Developer ID and notarized by Apple/);
+  assert.match(read('download.html'), /signed with a Developer ID and notarized by Apple/);
   for (const url of [dmg, sums, `${repo}/releases/tag/v0.3.0`, `${repo}/compare/v0.2.0...v0.3.0`]) {
     assert.ok(launch.includes(`href="${url}"`), `missing ${url}`);
   }
