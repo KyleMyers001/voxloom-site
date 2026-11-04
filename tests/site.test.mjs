@@ -49,6 +49,7 @@ test('download page links the v0.2.0 release assets and install steps', () => {
   assert.match(html, /drag <b>Voxloom<\/b> to Applications/);
   assert.match(html, /Privacy &amp; Security → Microphone/);
   assert.match(html, /Privacy &amp; Security → Accessibility/);
+  assert.match(html, /Privacy &amp; Security → Input Monitoring/);
 });
 
 test('homepage download buttons use the v0.2.0 DMG and show the beta status', () => {
@@ -65,6 +66,7 @@ test('changelog carries the v0.2.0 release notes', () => {
   assert.ok(html.includes(`href="${repo}/pull/147"`));
   assert.ok(html.includes(`href="${repo}/releases/tag/v0.2.0"`));
   assert.doesNotMatch(html, /Edit before publishing/);
+  assert.doesNotMatch(html, /BUS-\d+/);
 });
 
 test('no stale pre-release copy remains', () => {

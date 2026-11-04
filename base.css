@@ -40,7 +40,6 @@ footer a{color:inherit}
 .h{font-size:clamp(40px,6vw,72px);line-height:1;letter-spacing:-.04em;font-weight:900}
 .doc .lead{margin:20px 0 28px}
 .doc>.ph{display:block;margin-top:12px}
-.doc .ph a{color:#b6ff3c}
 .card{background:#111118;border:1px solid #23232e;border-radius:18px;padding:28px;margin-top:20px}
 .card ul,.card ol{padding-left:20px;color:#a1a1ad}
 .card li{margin:8px 0}
