@@ -34,19 +34,19 @@ for (const page of pages) {
 }
 
 const repo = 'https://github.com/KyleMyers001/voxloom';
-const dmg = `${repo}/releases/download/v0.3.0/Voxloom_0.3.0_macos_universal.dmg`;
-const sums = `${repo}/releases/download/v0.3.0/SHA256SUMS`;
+const dmg = `${repo}/releases/download/v0.4.0/Voxloom_0.4.0_macos_universal.dmg`;
+const sums = `${repo}/releases/download/v0.4.0/SHA256SUMS`;
 const read = (page) => readFileSync(resolve(root, page), 'utf8');
 
-test('download page is ready for v0.3.0 assets and install steps', () => {
+test('download page is ready for v0.4.0 assets and install steps', () => {
   const html = read('download.html');
-  for (const url of [dmg, sums, `${repo}/releases/download/v0.3.0/Voxloom_0.3.0_macos_universal.app.zip`, `${repo}/releases/tag/v0.3.0`, `${repo}/releases`, `${repo}/issues`]) {
+  for (const url of [dmg, sums, `${repo}/releases/download/v0.4.0/Voxloom_0.4.0_macos_universal.app.zip`, `${repo}/releases/tag/v0.4.0`, `${repo}/releases`, `${repo}/issues`]) {
     assert.ok(html.includes(`href="${url}"`), `missing ${url}`);
   }
   assert.match(html, /class="badge beta">Beta</);
   assert.match(html, /Work in progress/);
-  assert.match(html, /Download v0\.3\.0 \(\.dmg\)/);
-  assert.match(html, /<code>Voxloom_0\.3\.0_macos_universal\.dmg<\/code>/);
+  assert.match(html, /Download v0\.4\.0 \(\.dmg\)/);
+  assert.match(html, /<code>Voxloom_0\.4\.0_macos_universal\.dmg<\/code>/);
   assert.match(html, /macOS 13\.1 \(Ventura\) or later/);
   assert.match(html, /drag <b>Voxloom<\/b> to Applications/);
   assert.match(html, /Privacy &amp; Security → Microphone/);
@@ -55,11 +55,11 @@ test('download page is ready for v0.3.0 assets and install steps', () => {
   assert.match(html, /record the key again/);
 });
 
-test('homepage download buttons and beta label use v0.3.0', () => {
+test('homepage download buttons and beta label use v0.4.0', () => {
   const html = read('index.html');
   assert.equal(html.split(`href="${dmg}"`).length - 1, 2);
-  assert.equal(html.split('Download v0.3.0 for macOS').length - 1, 2);
-  assert.match(html, /Beta v0\.3\.0/);
+  assert.equal(html.split('Download v0.4.0 for macOS').length - 1, 2);
+  assert.match(html, /Beta v0\.4\.0/);
   assert.match(html, /class="badge beta">Beta</);
   assert.match(html, /expect rough edges/);
   assert.ok(html.includes(`href="${repo}/issues"`));
@@ -69,7 +69,7 @@ test('homepage presents the launch features without an upcoming-release teaser',
   const html = read('index.html');
   assert.doesNotMatch(html, /next-h|In development|Next up/);
   assert.match(html, /dictionary[\s\S]*case[\s\S]*spacing/i);
-  assert.ok(html.includes('href="changelog.html#v030-h"'));
+  assert.ok(html.includes('href="changelog.html#v040-h"'));
   assert.match(html, /Local cleanup[\s\S]*[Ee]xperimental/);
   assert.match(html, /optional[\s\S]*punctuation[\s\S]*filler words/i);
   assert.match(html, /depending on your retention setting/);
@@ -102,6 +102,24 @@ test('install guide describes the v0.3 in-app cleanup download, not manual Impor
   assert.match(cleanup, /not required for dictation/);
 });
 
+test('v0.4 release notes cover merged changes and sit above v0.3', () => {
+  const html = read('changelog.html');
+  const launch = html.match(/<section[^>]+aria-labelledby="v040-h"[\s\S]*?<\/section>/)?.[0];
+  assert.ok(launch, 'missing v0.4 release notes');
+  assert.match(launch, /Voxloom v0\.4\.0/);
+  for (const number of [155, 156, 157, 160, 165]) {
+    assert.ok(launch.includes(`href="${repo}/pull/${number}"`), `missing #${number}`);
+  }
+  assert.match(launch, /2026-11-07 · BETA/);
+  for (const url of [dmg, sums, `${repo}/releases/tag/v0.4.0`, `${repo}/compare/v0.3.0...v0.4.0`]) {
+    assert.ok(launch.includes(`href="${url}"`), `missing ${url}`);
+  }
+  assert.ok(html.indexOf('id="v040-h"') < html.indexOf('id="v030-h"'));
+  for (const page of ['index.html', 'download.html']) {
+    assert.doesNotMatch(read(page), /v0\.3\.0|Voxloom_0\.3/, page);
+  }
+});
+
 test('v0.3 launch notes cover merged changes and preserve historical v0.2 downloads', () => {
   const html = read('changelog.html');
   const launch = html.match(/<section[^>]+aria-labelledby="v030-h"[\s\S]*?<\/section>/)?.[0];
@@ -114,7 +132,7 @@ test('v0.3 launch notes cover merged changes and preserve historical v0.2 downlo
   assert.match(launch, /2026-11-04 · BETA/);
   assert.match(launch, /signed with a Developer ID and notarized by Apple/);
   assert.match(read('download.html'), /signed with a Developer ID and notarized by Apple/);
-  for (const url of [dmg, sums, `${repo}/releases/tag/v0.3.0`, `${repo}/compare/v0.2.0...v0.3.0`]) {
+  for (const url of [`${repo}/releases/download/v0.3.0/Voxloom_0.3.0_macos_universal.dmg`, `${repo}/releases/download/v0.3.0/SHA256SUMS`, `${repo}/releases/tag/v0.3.0`, `${repo}/compare/v0.2.0...v0.3.0`]) {
     assert.ok(launch.includes(`href="${url}"`), `missing ${url}`);
   }
   assert.ok(html.indexOf('id="v030-h"') < html.indexOf('id="v020-h"'));
