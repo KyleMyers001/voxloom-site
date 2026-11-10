@@ -167,7 +167,9 @@ test('no stale pre-release copy remains', () => {
 });
 
 test('build publishes only the website, never local tokens, docs or scripts', () => {
-  const result = spawnSync(process.execPath, ['scripts/build.mjs'], { cwd: root, encoding: 'utf8' });
+  const env = { ...process.env };
+  delete env.CF_ANALYTICS_TOKEN;
+  const result = spawnSync(process.execPath, ['scripts/build.mjs'], { cwd: root, encoding: 'utf8', env });
   assert.equal(result.status, 0, result.stderr);
   const expected = [
     ...pages, 'base.css', 'home.css', 'favicon.ico', 'favicon.svg',
