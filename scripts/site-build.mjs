@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 import { copyFile, mkdir, readFile, rm, writeFile, access } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 
@@ -11,8 +12,14 @@ export const dateBefore = 'Last updated: November 4, 2026.';
 export const dateAfter = 'Last updated: November 10, 2026.';
 export const cardMarkPattern = /^[ \t]*<!--voxloom-analytics-card-->\n?/m;
 
+export function expectedDisabledBytes(root, file) {
+  const source = readFileSync(resolve(root, file));
+  if (file !== 'privacy.html') return source;
+  return Buffer.from(source.toString('utf8').replace(cardMarkPattern, ''));
+}
+
 const analyticsCard = `  <section class="card" aria-labelledby="site-analytics-h"><small>WEBSITE</small><h2 class="h3" id="site-analytics-h">This website, not the app</h2>
-    <p>The Voxloom website uses Vercel Web Analytics for aggregate page views. Vercel's documentation says it does not use cookies and only stores anonymized, aggregated data. The Voxloom app itself does not include this analytics script and sends nothing to this service.</p>
+    <p>The Voxloom website uses Vercel Web Analytics for aggregate page-view reports. Vercel's documentation says it does not use cookies, identifies visitors by a hash created from the incoming request that is automatically discarded after 24 hours, and collects the pages visited, referrer, approximate location, and browser, OS, and device type. The Voxloom app itself does not include this analytics script and sends nothing to this service.</p>
   </section>
 `;
 

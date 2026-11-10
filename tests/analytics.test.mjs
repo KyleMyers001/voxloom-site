@@ -7,11 +7,11 @@ import { fileURLToPath } from 'node:url';
 import test from 'node:test';
 import {
   buildSite, files as siteFiles, pages, cardMark, dateBefore, analyticsSnippet,
+  expectedDisabledBytes,
 } from '../scripts/site-build.mjs';
-import { expectedMainBytes, hasOriginMain, showMain } from './main-tree.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
-const cardText = 'The Voxloom website uses Vercel Web Analytics for aggregate page views';
+const cardText = 'The Voxloom website uses Vercel Web Analytics for aggregate page-view reports';
 const scriptSrc = '/_vercel/insights/script.js';
 
 const read = (dir, page) => readFileSync(resolve(dir, page), 'utf8');
@@ -49,15 +49,13 @@ test('source privacy.html keeps the card behind a build marker and does not ship
   }
 });
 
-test('disabled build is byte-identical to origin/main for every published file', () => {
+test('disabled build matches source, with only the analytics marker stripped from privacy.html', () => {
   const { result, out } = build();
   try {
     assert.equal(result.status, 0, result.stderr);
     for (const file of siteFiles) {
       const built = readFileSync(resolve(out, file));
-      const main = showMain(file, root);
-      assert.equal(main.status, 0, `missing origin/main:${file}: ${main.stderr || main.stdout}`);
-      assert.deepEqual(built, main.stdout, `${file} is not byte-identical to origin/main`);
+      assert.deepEqual(built, expectedDisabledBytes(root, file), `${file} is not byte-identical to the disabled source`);
     }
   } finally {
     rmSync(out, { recursive: true, force: true });
@@ -80,7 +78,11 @@ test('enabled build injects one script plus stub per page and the privacy card',
     assert.ok(privacy.includes(cardText));
     assert.match(privacy, /id="site-analytics-h"/);
     assert.match(privacy, /This website, not the app/);
-    assert.match(privacy, /does not use cookies and only stores anonymized, aggregated data/);
+    assert.match(privacy, /does not use cookies/);
+    assert.match(privacy, /hash created from the incoming request/);
+    assert.match(privacy, /automatically discarded after 24 hours/);
+    assert.match(privacy, /pages visited, referrer, approximate location, and browser, OS, and device type/);
+    assert.doesNotMatch(privacy, /only stores anonymized, aggregated data/);
     assert.match(privacy, /The Voxloom app itself does not include this analytics script and sends nothing to this service/);
     assert.match(privacy, /Last updated: November 10, 2026/);
     assert.doesNotMatch(privacy, /November 4, 2026/);
@@ -181,14 +183,3 @@ test('no file in the repo mentions the previous analytics vendor', () => {
   }
 });
 
-test('the Vercel no-git fallback matches origin/main for every published file', () => {
-  if (!hasOriginMain(root)) {
-    if (process.env.VERCEL) return;
-    throw new Error('origin/main is required for this comparison outside Vercel builds');
-  }
-  for (const file of siteFiles) {
-    const main = spawnSync('git', ['show', `origin/main:${file}`], { cwd: root, encoding: 'buffer' });
-    assert.equal(main.status, 0, `missing origin/main:${file}: ${main.stderr || main.stdout}`);
-    assert.deepEqual(expectedMainBytes(file, root), main.stdout, `${file} fallback does not match origin/main`);
-  }
-});

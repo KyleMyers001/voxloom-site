@@ -19,7 +19,7 @@ Open http://localhost:8080 to preview the generated site.
 
 The build copies only the four HTML pages, two CSS files, favicons, touch icon and social image into `public/`. Documentation, development tools and local environment files are not included in the generated site.
 
-To enable website analytics, set `VOXLOOM_ANALYTICS=1` at build time after turning Web Analytics on for the Vercel project. That injects the official same-origin script on every page and the privacy-page analytics card. Leave the variable unset or empty for a build with no analytics script or card. Any other value fails the build. Do not commit a secret; this flag is not a token.
+To enable website analytics, set `VOXLOOM_ANALYTICS=1` at build time after turning Web Analytics on for the Vercel project. That injects the official same-origin script on every page and the privacy-page analytics card. `/_vercel/insights/script.js` exists only after Web Analytics is enabled in the Vercel project and a fresh deploy. Until then, and on local static servers, the enabled build's script 404s and analytics is silently off. Leave the variable unset or empty for a build with no analytics script or card. Any other value fails the build. Do not commit a secret; this flag is not a token.
 
 ## Checks
 

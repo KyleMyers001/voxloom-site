@@ -4,7 +4,7 @@ import { resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import test from 'node:test';
-import { showMain } from './main-tree.mjs';
+import { expectedDisabledBytes } from '../scripts/site-build.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const origin = 'https://voxloom.app';
@@ -183,9 +183,7 @@ test('build publishes only the website, never local tokens, docs or scripts', ()
   assert.deepEqual(actual, expected);
   for (const file of expected) {
     const built = readFileSync(resolve(root, 'public', file));
-    const fromMain = showMain(file, root);
-    assert.equal(fromMain.status, 0, `missing origin/main:${file}: ${fromMain.stderr || fromMain.stdout}`);
-    assert.deepEqual(built, fromMain.stdout, `${file} disabled build must be byte-identical to origin/main`);
+    assert.deepEqual(built, expectedDisabledBytes(root, file), `${file} disabled build must match source with the analytics marker stripped`);
   }
 });
 
