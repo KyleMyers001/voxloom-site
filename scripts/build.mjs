@@ -31,6 +31,13 @@ function analyticsSnippet(value) {
   return `<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "${escaped}"}'></script>\n`;
 }
 
+const snippet = token ? analyticsSnippet(token) : '';
+const cardMark = '<!--voxloom-analytics-card-->';
+const analyticsCard = `  <section class="card" aria-labelledby="site-analytics-h"><small>WEBSITE</small><h2 class="h3" id="site-analytics-h">This website, not the app</h2>
+    <p>The Voxloom website uses Cloudflare Web Analytics for aggregate page views. Cloudflare's documentation says the beacon uses no cookies and does not collect or use visitors' personal data. The Voxloom app itself does not include this beacon and sends nothing to this service.</p>
+  </section>
+`;
+
 await rm(output, { recursive: true, force: true });
 for (const file of files) {
   const destination = resolve(output, file);
@@ -38,8 +45,19 @@ for (const file of files) {
   await copyFile(resolve(root, file), destination);
 }
 
-if (token) {
-  const snippet = analyticsSnippet(token);
+const privacyPath = resolve(output, 'privacy.html');
+let privacy = await readFile(privacyPath, 'utf8');
+if (!privacy.includes(cardMark)) {
+  throw new Error('privacy.html is missing the <!--voxloom-analytics-card--> marker.');
+}
+privacy = privacy.replace(`${cardMark}
+`, snippet ? analyticsCard : '');
+if (snippet) {
+  privacy = privacy.replace('Last updated: November 4, 2026.', 'Last updated: November 10, 2026.');
+}
+await writeFile(privacyPath, privacy);
+
+if (snippet) {
   for (const page of pages) {
     const path = resolve(output, page);
     const html = await readFile(path, 'utf8');

@@ -181,6 +181,11 @@ test('build publishes only the website, never local tokens, docs or scripts', ()
     .sort();
   assert.deepEqual(actual, expected);
   for (const file of expected) {
+    if (file === 'privacy.html') {
+      const built = readFileSync(resolve(root, 'public', file), 'utf8');
+      assert.doesNotMatch(built, /voxloom-analytics-card|Cloudflare Web Analytics|site-analytics-h/);
+      continue;
+    }
     assert.deepEqual(readFileSync(resolve(root, 'public', file)), readFileSync(resolve(root, file)));
   }
 });
