@@ -8,6 +8,7 @@ import test from 'node:test';
 import {
   buildSite, files as siteFiles, pages, cardMark, dateBefore, analyticsSnippet,
 } from '../scripts/site-build.mjs';
+import { showMain } from './main-tree.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const cardText = 'The Voxloom website uses Vercel Web Analytics for aggregate page views';
@@ -54,8 +55,8 @@ test('disabled build is byte-identical to origin/main for every published file',
     assert.equal(result.status, 0, result.stderr);
     for (const file of siteFiles) {
       const built = readFileSync(resolve(out, file));
-      const main = spawnSync('git', ['show', `origin/main:${file}`], { cwd: root, encoding: 'buffer' });
-      assert.equal(main.status, 0, `missing origin/main:${file}`);
+      const main = showMain(file, root);
+      assert.equal(main.status, 0, `missing origin/main:${file}: ${main.stderr || main.stdout}`);
       assert.deepEqual(built, main.stdout, `${file} is not byte-identical to origin/main`);
     }
   } finally {
