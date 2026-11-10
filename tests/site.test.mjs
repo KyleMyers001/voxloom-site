@@ -34,7 +34,7 @@ for (const page of pages) {
   });
 }
 
-const repo = 'https://github.com/KyleMyers001/voxloom';
+const repo = 'https://github.com/voxloom-app/voxloom';
 const dmg = `${repo}/releases/download/v0.4.0/Voxloom_0.4.0_macos_universal.dmg`;
 const sums = `${repo}/releases/download/v0.4.0/SHA256SUMS`;
 const read = (page) => readFileSync(resolve(root, page), 'utf8');
@@ -193,9 +193,10 @@ test('favicon retains the app brand colors after migration', () => {
   for (const color of ['#4cf4ff', '#c4ff5a']) assert.ok(!svg.includes(color));
 });
 
-test('no file still points at the old Vercel subdomain', () => {
+test('no file still points at the old Vercel subdomain or previous GitHub owner', () => {
   const skip = new Set(['.git', 'node_modules', 'public']);
-  const old = ['voxloom', 'vercel', 'app'].join('.');
+  const oldDomain = ['voxloom', 'vercel', 'app'].join('.');
+  const previousOwner = ['KyleMyers', '001'].join('');
   const walk = (dir) => readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
     if (skip.has(entry.name)) return [];
     const path = resolve(dir, entry.name);
@@ -203,6 +204,8 @@ test('no file still points at the old Vercel subdomain', () => {
   });
   for (const file of walk(root)) {
     if (!/\.(html|css|mjs|js|json|md|sh|txt|xml)$/.test(file)) continue;
-    assert.ok(!readFileSync(file, 'utf8').includes(old), `${file} still mentions the old domain`);
+    const text = readFileSync(file, 'utf8');
+    assert.ok(!text.includes(oldDomain), `${file} still mentions the old domain`);
+    assert.ok(!text.toLowerCase().includes(previousOwner.toLowerCase()), `${file} still mentions the previous GitHub owner`);
   }
 });

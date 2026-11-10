@@ -2,7 +2,7 @@
 # Usage: scripts/rename.sh "NewName"   (works from any directory)
 # Replaces the product name (default "Voxloom") literally in root-level *.html and *.css:
 # page text, <title>, and meta/social tags. Any characters are safe (& / \ $ etc.).
-# Leaves GitHub URLs (KyleMyers001/voxloom, lowercase) untouched. Logo/footer are uppercased via CSS.
+# Leaves GitHub URLs (voxloom-app/voxloom, lowercase) untouched. Logo/footer are uppercased via CSS.
 # Images (og.png, favicons, apple-touch-icon) contain no product name, so need no change.
 # Reverse with: OLD="NewName" scripts/rename.sh Voxloom
 # Note: the round trip is only lossless if NewName does not already appear in the pages.
