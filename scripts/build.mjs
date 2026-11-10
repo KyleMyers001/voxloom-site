@@ -1,19 +1,22 @@
-import { copyFile, mkdir, rm } from 'node:fs/promises';
-import { dirname, resolve } from 'node:path';
+import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { buildSite } from './site-build.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
-const output = resolve(root, 'public');
-const files = [
-  'index.html', 'download.html', 'privacy.html', 'changelog.html',
-  'base.css', 'home.css', 'favicon.ico', 'favicon.svg',
-  'apple-touch-icon.png', 'assets/og.png',
-];
 
-await rm(output, { recursive: true, force: true });
-for (const file of files) {
-  const destination = resolve(output, file);
-  await mkdir(dirname(destination), { recursive: true });
-  await copyFile(resolve(root, file), destination);
+function outputDir() {
+  const raw = process.env.BUILD_OUTPUT;
+  if (!raw) return resolve(root, 'public');
+  const dest = resolve(root, raw);
+  const prefix = root.endsWith('/') ? root : `${root}/`;
+  if (dest !== resolve(root, 'public') && !dest.startsWith(prefix) && !dest.startsWith('/tmp/')) {
+    throw new Error('BUILD_OUTPUT must be public/, a path under the repo, or a /tmp directory.');
+  }
+  return dest;
 }
-console.log(`Built ${files.length} static files in public/.`);
+
+await buildSite({
+  root,
+  output: outputDir(),
+  flag: process.env.VOXLOOM_ANALYTICS,
+});

@@ -4,6 +4,7 @@ import { resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import test from 'node:test';
+import { expectedDisabledBytes } from '../scripts/site-build.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const origin = 'https://voxloom.app';
@@ -167,7 +168,9 @@ test('no stale pre-release copy remains', () => {
 });
 
 test('build publishes only the website, never local tokens, docs or scripts', () => {
-  const result = spawnSync(process.execPath, ['scripts/build.mjs'], { cwd: root, encoding: 'utf8' });
+  const env = { ...process.env };
+  delete env.VOXLOOM_ANALYTICS;
+  const result = spawnSync(process.execPath, ['scripts/build.mjs'], { cwd: root, encoding: 'utf8', env });
   assert.equal(result.status, 0, result.stderr);
   const expected = [
     ...pages, 'base.css', 'home.css', 'favicon.ico', 'favicon.svg',
@@ -179,7 +182,8 @@ test('build publishes only the website, never local tokens, docs or scripts', ()
     .sort();
   assert.deepEqual(actual, expected);
   for (const file of expected) {
-    assert.deepEqual(readFileSync(resolve(root, 'public', file)), readFileSync(resolve(root, file)));
+    const built = readFileSync(resolve(root, 'public', file));
+    assert.deepEqual(built, expectedDisabledBytes(root, file), `${file} disabled build must match source with the analytics marker stripped`);
   }
 });
 
