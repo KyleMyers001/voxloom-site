@@ -8,7 +8,7 @@ import test from 'node:test';
 import {
   buildSite, files as siteFiles, pages, cardMark, dateBefore, analyticsSnippet,
 } from '../scripts/site-build.mjs';
-import { showMain } from './main-tree.mjs';
+import { expectedMainBytes, hasOriginMain, showMain } from './main-tree.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const cardText = 'The Voxloom website uses Vercel Web Analytics for aggregate page views';
@@ -178,5 +178,17 @@ test('no file in the repo mentions the previous analytics vendor', () => {
     if (!/\.(html|css|mjs|js|json|md|sh|txt|xml)$/.test(file)) continue;
     const banned = ['cloud', 'flare'].join('');
     assert.ok(!readFileSync(file, 'utf8').toLowerCase().includes(banned), file);
+  }
+});
+
+test('the Vercel no-git fallback matches origin/main for every published file', () => {
+  if (!hasOriginMain(root)) {
+    if (process.env.VERCEL) return;
+    throw new Error('origin/main is required for this comparison outside Vercel builds');
+  }
+  for (const file of siteFiles) {
+    const main = spawnSync('git', ['show', `origin/main:${file}`], { cwd: root, encoding: 'buffer' });
+    assert.equal(main.status, 0, `missing origin/main:${file}: ${main.stderr || main.stdout}`);
+    assert.deepEqual(expectedMainBytes(file, root), main.stdout, `${file} fallback does not match origin/main`);
   }
 });

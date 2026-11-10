@@ -9,7 +9,7 @@ export const files = [
 export const cardMark = '<!--voxloom-analytics-card-->';
 export const dateBefore = 'Last updated: November 4, 2026.';
 export const dateAfter = 'Last updated: November 10, 2026.';
-const cardMarkPattern = /^[ \t]*<!--voxloom-analytics-card-->\n?/m;
+export const cardMarkPattern = /^[ \t]*<!--voxloom-analytics-card-->\n?/m;
 
 const analyticsCard = `  <section class="card" aria-labelledby="site-analytics-h"><small>WEBSITE</small><h2 class="h3" id="site-analytics-h">This website, not the app</h2>
     <p>The Voxloom website uses Vercel Web Analytics for aggregate page views. Vercel's documentation says it does not use cookies and only stores anonymized, aggregated data. The Voxloom app itself does not include this analytics script and sends nothing to this service.</p>
