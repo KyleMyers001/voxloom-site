@@ -5,20 +5,20 @@ import { dirname, join, resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import test from 'node:test';
-import { buildSite, files as siteFiles, cardMark, dateBefore } from '../scripts/site-build.mjs';
+import {
+  buildSite, files as siteFiles, pages, cardMark, dateBefore, analyticsSnippet,
+} from '../scripts/site-build.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
-const pages = ['index.html', 'download.html', 'privacy.html', 'changelog.html'];
-const beaconHost = 'https://static.cloudflareinsights.com/beacon.min.js';
-const dummy = '0123456789abcdef0123456789abcdef';
-const cardText = 'The Voxloom website uses Cloudflare Web Analytics for aggregate page views';
+const cardText = 'The Voxloom website uses Vercel Web Analytics for aggregate page views';
+const scriptSrc = '/_vercel/insights/script.js';
 
 const read = (dir, page) => readFileSync(resolve(dir, page), 'utf8');
 
 function build(envExtra = {}) {
   const out = mkdtempSync(join(tmpdir(), 'voxloom-site-build-'));
   const env = { ...process.env, ...envExtra, BUILD_OUTPUT: out };
-  if (!('CF_ANALYTICS_TOKEN' in envExtra)) delete env.CF_ANALYTICS_TOKEN;
+  if (!('VOXLOOM_ANALYTICS' in envExtra)) delete env.VOXLOOM_ANALYTICS;
   const result = spawnSync(process.execPath, ['scripts/build.mjs'], { cwd: root, encoding: 'utf8', env });
   return { result, out };
 }
@@ -36,58 +36,51 @@ function makeFixture(mutate) {
   return { dir, out };
 }
 
-function outputListing(out) {
-  return readdirSync(out).sort();
-}
+const listing = (out) => readdirSync(out).sort();
 
 test('source privacy.html keeps the card behind a build marker and does not ship the claim', () => {
   const html = read(root, 'privacy.html');
   assert.ok(html.includes(cardMark));
-  assert.doesNotMatch(html, /Cloudflare Web Analytics|site-analytics-h|This website, not the app/);
+  assert.doesNotMatch(html, /Vercel Web Analytics|site-analytics-h|This website, not the app/);
   assert.doesNotMatch(html, /PLACEHOLDER/);
   for (const page of pages) {
-    assert.doesNotMatch(read(root, page), /cloudflareinsights|data-cf-beacon|CF_ANALYTICS_TOKEN/);
+    assert.doesNotMatch(read(root, page), /_vercel\/insights|window\.va|VOXLOOM_ANALYTICS/);
   }
 });
 
-test('build without CF_ANALYTICS_TOKEN emits no card, marker or beacon', () => {
+test('disabled build is byte-identical to origin/main for every published file', () => {
   const { result, out } = build();
   try {
     assert.equal(result.status, 0, result.stderr);
-    for (const page of pages) {
-      const html = read(out, page);
-      assert.doesNotMatch(html, /cloudflareinsights|data-cf-beacon|beacon\.min\.js|voxloom-analytics-card/);
-      if (page === 'privacy.html') {
-        assert.doesNotMatch(html, /Cloudflare Web Analytics|site-analytics-h|This website, not the app/);
-        assert.match(html, /Last updated: November 4, 2026/);
-        assert.doesNotMatch(html, /November 10, 2026/);
-      } else {
-        assert.equal(html, read(root, page));
-      }
+    for (const file of siteFiles) {
+      const built = readFileSync(resolve(out, file));
+      const main = spawnSync('git', ['show', `origin/main:${file}`], { cwd: root, encoding: 'buffer' });
+      assert.equal(main.status, 0, `missing origin/main:${file}`);
+      assert.deepEqual(built, main.stdout, `${file} is not byte-identical to origin/main`);
     }
   } finally {
     rmSync(out, { recursive: true, force: true });
   }
 });
 
-test('build with a hex token injects the privacy card and the official beacon on every page', () => {
-  const { result, out } = build({ CF_ANALYTICS_TOKEN: dummy });
+test('enabled build injects one script plus stub per page and the privacy card', () => {
+  const { result, out } = build({ VOXLOOM_ANALYTICS: '1' });
   try {
     assert.equal(result.status, 0, result.stderr);
-    const snippet = `<script type="module" src="${beaconHost}" data-cf-beacon='{"token": "${dummy}"}'></script>`;
     for (const page of pages) {
       const html = read(out, page);
-      assert.ok(html.includes(snippet), `${page} is missing the injected beacon`);
-      assert.equal(html.split(beaconHost).length - 1, 1);
-      assert.ok(html.includes(`${snippet}\n</body>`), `${page} does not place the beacon before </body>`);
+      assert.equal(html.split(analyticsSnippet).length - 1, 1, `${page} should contain the snippet once`);
+      assert.equal(html.split(scriptSrc).length - 1, 1);
+      assert.equal(html.split('window.va = window.va').length - 1, 1);
+      assert.ok(html.includes(`${analyticsSnippet}</body>`), `${page} does not place the snippet before </body>`);
       assert.doesNotMatch(html, /voxloom-analytics-card/);
     }
     const privacy = read(out, 'privacy.html');
     assert.ok(privacy.includes(cardText));
     assert.match(privacy, /id="site-analytics-h"/);
     assert.match(privacy, /This website, not the app/);
-    assert.match(privacy, /uses no cookies and does not collect or use visitors. personal data/);
-    assert.match(privacy, /The Voxloom app itself does not include this beacon and sends nothing to this service/);
+    assert.match(privacy, /does not use cookies and only stores anonymized, aggregated data/);
+    assert.match(privacy, /The Voxloom app itself does not include this analytics script and sends nothing to this service/);
     assert.match(privacy, /Last updated: November 10, 2026/);
     assert.doesNotMatch(privacy, /November 4, 2026/);
   } finally {
@@ -95,31 +88,15 @@ test('build with a hex token injects the privacy card and the official beacon on
   }
 });
 
-test('build accepts a 32-hex token with surrounding whitespace after trim', async () => {
-  const { dir, out } = makeFixture();
-  try {
-    await buildSite({ root: dir, output: out, token: `  ${dummy}\n` });
-    assert.ok(read(out, 'privacy.html').includes(cardText));
-    assert.ok(read(out, 'index.html').includes(`{"token": "${dummy}"}`));
-  } finally {
-    rmSync(dir, { recursive: true, force: true });
-    rmSync(out, { recursive: true, force: true });
-  }
-});
-
-test('build rejects non-32-hex tokens and leaves the output directory untouched', async () => {
-  const cases = [
-    'not-a-token"><script>',
-    dummy.slice(0, 31),
-    `${dummy}0`,
-    'abc',
-    '   \n',
-  ];
-  for (const value of cases) {
+test('invalid VOXLOOM_ANALYTICS values fail before writing output', async () => {
+  for (const value of ['0', 'true', 'yes', '1\n', ' 1', '2']) {
     const { dir, out } = makeFixture();
     try {
-      await assert.rejects(() => buildSite({ root: dir, output: out, token: value }), /32-character hex/);
-      assert.deepEqual(outputListing(out), ['SENTINEL']);
+      await assert.rejects(
+        () => buildSite({ root: dir, output: out, flag: value }),
+        /exactly '1'/,
+      );
+      assert.deepEqual(listing(out), ['SENTINEL']);
       assert.equal(read(out, 'SENTINEL'), 'keep');
     } finally {
       rmSync(dir, { recursive: true, force: true });
@@ -128,28 +105,25 @@ test('build rejects non-32-hex tokens and leaves the output directory untouched'
   }
 });
 
-test('build with a token throws if the last-updated date is missing and leaves output untouched', async () => {
+test('build with the flag throws if the last-updated date is missing and leaves output untouched', async () => {
   const { dir, out } = makeFixture((src) => {
-    const path = resolve(src, 'privacy.html');
-    writeFileSync(path, read(src, 'privacy.html').replace(dateBefore, 'Last updated: January 1, 2020.'));
+    writeFileSync(resolve(src, 'privacy.html'), read(src, 'privacy.html').replace(dateBefore, 'Last updated: January 1, 2020.'));
   });
   try {
-    await assert.rejects(() => buildSite({ root: dir, output: out, token: dummy }), /November 4, 2026/);
-    assert.deepEqual(outputListing(out), ['SENTINEL']);
-    assert.equal(read(out, 'SENTINEL'), 'keep');
+    await assert.rejects(() => buildSite({ root: dir, output: out, flag: '1' }), /November 4, 2026/);
+    assert.deepEqual(listing(out), ['SENTINEL']);
   } finally {
     rmSync(dir, { recursive: true, force: true });
     rmSync(out, { recursive: true, force: true });
   }
 });
 
-test('marker replacement is checked and works without a trailing newline', async () => {
+test('marker replacement is checked, consumes leading indentation, and works without a trailing newline', async () => {
   const { dir, out } = makeFixture((src) => {
-    const path = resolve(src, 'privacy.html');
-    writeFileSync(path, read(src, 'privacy.html').replace(`${cardMark}\n`, cardMark));
+    writeFileSync(resolve(src, 'privacy.html'), read(src, 'privacy.html').replace(`  ${cardMark}\n`, `  ${cardMark}`));
   });
   try {
-    await buildSite({ root: dir, output: out, token: dummy });
+    await buildSite({ root: dir, output: out, flag: '1' });
     const privacy = read(out, 'privacy.html');
     assert.ok(privacy.includes(cardText));
     assert.doesNotMatch(privacy, /voxloom-analytics-card/);
@@ -162,13 +136,14 @@ test('marker replacement is checked and works without a trailing newline', async
 
 test('a missing analytics marker fails before writing output', async () => {
   const { dir, out } = makeFixture((src) => {
-    const path = resolve(src, 'privacy.html');
-    writeFileSync(path, read(src, 'privacy.html').replace(`${cardMark}\n`, ''));
+    writeFileSync(resolve(src, 'privacy.html'), read(src, 'privacy.html').replace(`  ${cardMark}\n`, ''));
   });
   try {
-    await assert.rejects(() => buildSite({ root: dir, output: out, token: dummy }), /missing the <!--voxloom-analytics-card--> marker/);
-    assert.deepEqual(outputListing(out), ['SENTINEL']);
-    assert.equal(read(out, 'SENTINEL'), 'keep');
+    await assert.rejects(
+      () => buildSite({ root: dir, output: out, flag: '1' }),
+      /missing the <!--voxloom-analytics-card--> marker/,
+    );
+    assert.deepEqual(listing(out), ['SENTINEL']);
   } finally {
     rmSync(dir, { recursive: true, force: true });
     rmSync(out, { recursive: true, force: true });
@@ -177,15 +152,30 @@ test('a missing analytics marker fails before writing output', async () => {
 
 test('a missing </body> tag fails before writing output', async () => {
   const { dir, out } = makeFixture((src) => {
-    const path = resolve(src, 'index.html');
-    writeFileSync(path, read(src, 'index.html').replace('</body>', '</div>'));
+    writeFileSync(resolve(src, 'index.html'), read(src, 'index.html').replace('</body>', '</div>'));
   });
   try {
-    await assert.rejects(() => buildSite({ root: dir, output: out, token: dummy }), /index\.html is missing a closing body tag/);
-    assert.deepEqual(outputListing(out), ['SENTINEL']);
-    assert.equal(read(out, 'SENTINEL'), 'keep');
+    await assert.rejects(
+      () => buildSite({ root: dir, output: out, flag: '1' }),
+      /index\.html is missing a closing body tag/,
+    );
+    assert.deepEqual(listing(out), ['SENTINEL']);
   } finally {
     rmSync(dir, { recursive: true, force: true });
     rmSync(out, { recursive: true, force: true });
+  }
+});
+
+test('no file in the repo mentions the previous analytics vendor', () => {
+  const skip = new Set(['.git', 'node_modules', 'public']);
+  const walk = (dir) => readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+    if (skip.has(entry.name)) return [];
+    const path = resolve(dir, entry.name);
+    return entry.isDirectory() ? walk(path) : [path];
+  });
+  for (const file of walk(root)) {
+    if (!/\.(html|css|mjs|js|json|md|sh|txt|xml)$/.test(file)) continue;
+    const banned = ['cloud', 'flare'].join('');
+    assert.ok(!readFileSync(file, 'utf8').toLowerCase().includes(banned), file);
   }
 });

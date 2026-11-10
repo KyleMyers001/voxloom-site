@@ -18,5 +18,5 @@ function outputDir() {
 await buildSite({
   root,
   output: outputDir(),
-  token: process.env.CF_ANALYTICS_TOKEN,
+  flag: process.env.VOXLOOM_ANALYTICS,
 });

@@ -6,7 +6,7 @@ Visit the [website](https://voxloom.app/).
 
 ## Local development
 
-Use Node.js 24. The site uses plain HTML and CSS, with no third-party npm dependencies or application backend. Pages include no client-side JavaScript unless `CF_ANALYTICS_TOKEN` is set at build time, in which case the build injects only the Cloudflare Web Analytics beacon.
+Use Node.js 24. The site uses plain HTML and CSS, with no third-party npm dependencies or application backend. Pages include no client-side JavaScript unless `VOXLOOM_ANALYTICS=1` is set at build time, in which case the build injects only the Vercel Web Analytics script and its `window.va` stub.
 
 ```sh
 npm ci --ignore-scripts
@@ -19,7 +19,7 @@ Open http://localhost:8080 to preview the generated site.
 
 The build copies only the four HTML pages, two CSS files, favicons, touch icon and social image into `public/`. Documentation, development tools and local environment files are not included in the generated site.
 
-To enable website analytics, set `CF_ANALYTICS_TOKEN` to the 32-character hex site token from Cloudflare Web Analytics and run the build again. That injects the official beacon on every page and the privacy-page analytics card. Leave the variable unset for a tokenless build. Do not commit the token.
+To enable website analytics, set `VOXLOOM_ANALYTICS=1` at build time after turning Web Analytics on for the Vercel project. That injects the official same-origin script on every page and the privacy-page analytics card. Leave the variable unset or empty for a build with no analytics script or card. Any other value fails the build. Do not commit a secret; this flag is not a token.
 
 ## Checks
 

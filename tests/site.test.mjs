@@ -168,7 +168,7 @@ test('no stale pre-release copy remains', () => {
 
 test('build publishes only the website, never local tokens, docs or scripts', () => {
   const env = { ...process.env };
-  delete env.CF_ANALYTICS_TOKEN;
+  delete env.VOXLOOM_ANALYTICS;
   const result = spawnSync(process.execPath, ['scripts/build.mjs'], { cwd: root, encoding: 'utf8', env });
   assert.equal(result.status, 0, result.stderr);
   const expected = [
@@ -181,12 +181,10 @@ test('build publishes only the website, never local tokens, docs or scripts', ()
     .sort();
   assert.deepEqual(actual, expected);
   for (const file of expected) {
-    if (file === 'privacy.html') {
-      const built = readFileSync(resolve(root, 'public', file), 'utf8');
-      assert.doesNotMatch(built, /voxloom-analytics-card|Cloudflare Web Analytics|site-analytics-h/);
-      continue;
-    }
-    assert.deepEqual(readFileSync(resolve(root, 'public', file)), readFileSync(resolve(root, file)));
+    const built = readFileSync(resolve(root, 'public', file));
+    const fromMain = spawnSync('git', ['show', `origin/main:${file}`], { cwd: root, encoding: 'buffer' });
+    assert.equal(fromMain.status, 0, `missing origin/main:${file}`);
+    assert.deepEqual(built, fromMain.stdout, `${file} disabled build must be byte-identical to origin/main`);
   }
 });
 
