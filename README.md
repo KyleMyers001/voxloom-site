@@ -1,6 +1,6 @@
 # Voxloom website
 
-Static marketing site for [Voxloom](https://github.com/KyleMyers001/voxloom), an on-device dictation app for macOS. The desktop app and its releases are maintained separately.
+Static marketing site for [Voxloom](https://github.com/voxloom-app/voxloom), an on-device dictation app for macOS. The desktop app and its releases are maintained separately.
 
 Visit the [website](https://voxloom.app/).
 
