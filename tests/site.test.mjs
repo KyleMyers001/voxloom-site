@@ -191,6 +191,8 @@ test('favicon retains the app brand colors after migration', () => {
   const svg = readFileSync(resolve(root, 'favicon.svg'), 'utf8');
   for (const color of ['#3cf0ff', '#b6ff3c']) assert.ok(svg.includes(color));
   for (const color of ['#4cf4ff', '#c4ff5a']) assert.ok(!svg.includes(color));
+  assert.match(svg, /viewBox="72 72 880 880"/);
+  assert.match(svg, /x="72" y="72" width="880" height="880"/);
 });
 
 test('no file still points at the old Vercel subdomain or previous GitHub owner', () => {
