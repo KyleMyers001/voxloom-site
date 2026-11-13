@@ -5,7 +5,8 @@ import { dirname, resolve } from 'node:path';
 export const pages = ['index.html', 'download.html', 'privacy.html', 'changelog.html'];
 export const files = [
   ...pages, 'base.css', 'home.css', 'favicon.ico', 'favicon.svg',
-  'apple-touch-icon.png', 'assets/og.png',
+  'icon-192.png', 'icon-512.png', 'apple-touch-icon.png',
+  'manifest.webmanifest', 'assets/og.png',
 ];
 export const cardMark = '<!--voxloom-analytics-card-->';
 export const dateBefore = 'Last updated: November 4, 2026.';

@@ -174,7 +174,8 @@ test('build publishes only the website, never local tokens, docs or scripts', ()
   assert.equal(result.status, 0, result.stderr);
   const expected = [
     ...pages, 'base.css', 'home.css', 'favicon.ico', 'favicon.svg',
-    'apple-touch-icon.png', 'assets/og.png',
+    'icon-192.png', 'icon-512.png', 'apple-touch-icon.png',
+    'manifest.webmanifest', 'assets/og.png',
   ].sort();
   const actual = readdirSync(resolve(root, 'public'), { recursive: true, withFileTypes: true })
     .filter((entry) => entry.isFile())
