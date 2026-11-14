@@ -1,0 +1,104 @@
+===== NODE v24.20.0 =====
+===== npm test =====
+
+> voxloom-site@1.0.0 test
+> node --test tests/*.test.mjs
+
+✔ source privacy.html keeps the card behind a build marker and does not ship the claim (1.32459ms)
+✔ disabled build matches source, with only the analytics marker stripped from privacy.html (42.5626ms)
+✔ enabled build injects one script plus stub per page and the privacy card (29.677588ms)
+✔ invalid VOXLOOM_ANALYTICS values fail before writing output (9.429036ms)
+✔ build with the flag throws if the last-updated date is missing and leaves output untouched (5.22226ms)
+Built 10 static files in public/.
+✔ marker replacement is checked, consumes leading indentation, and works without a trailing newline (6.361113ms)
+✔ a missing analytics marker fails before writing output (3.309528ms)
+✔ a missing </body> tag fails before writing output (2.586522ms)
+✔ no file in the repo mentions the previous analytics vendor (1.002642ms)
+✔ index.html: metadata, local links and launch copy are valid (1.422383ms)
+✔ download.html: metadata, local links and launch copy are valid (0.352234ms)
+✔ privacy.html: metadata, local links and launch copy are valid (0.239272ms)
+✔ changelog.html: metadata, local links and launch copy are valid (1.09902ms)
+✔ download page is ready for v0.4.0 assets and install steps (0.277792ms)
+✔ homepage download buttons and beta label use v0.4.0 (0.196357ms)
+✔ homepage presents the launch features without an upcoming-release teaser (0.549983ms)
+✔ changelog carries the v0.2.0 release notes (0.239777ms)
+✔ install guide describes the v0.3 in-app cleanup download, not manual Import (0.228355ms)
+✔ v0.4 release notes cover merged changes and sit above v0.3 (3.6655ms)
+✔ v0.3 launch notes cover merged changes and preserve historical v0.2 downloads (0.519289ms)
+✔ privacy covers both local models, plain-text history and temporary clipboard use (0.216784ms)
+✔ no stale pre-release copy remains (0.257086ms)
+✔ build publishes only the website, never local tokens, docs or scripts (37.880556ms)
+✔ favicon retains the app brand colors after migration (0.149937ms)
+✔ no file still points at the old Vercel subdomain or previous GitHub owner (0.786792ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 155.363221
+EXIT test: 0
+===== npm run check =====
+
+> voxloom-site@1.0.0 check
+> npm test && bash scripts/check-placeholders.sh
+
+
+> voxloom-site@1.0.0 test
+> node --test tests/*.test.mjs
+
+✔ source privacy.html keeps the card behind a build marker and does not ship the claim (1.207053ms)
+✔ disabled build matches source, with only the analytics marker stripped from privacy.html (50.389259ms)
+✔ enabled build injects one script plus stub per page and the privacy card (38.059172ms)
+✔ invalid VOXLOOM_ANALYTICS values fail before writing output (12.608887ms)
+✔ build with the flag throws if the last-updated date is missing and leaves output untouched (7.162291ms)
+Built 10 static files in public/.
+✔ marker replacement is checked, consumes leading indentation, and works without a trailing newline (7.10084ms)
+✔ a missing analytics marker fails before writing output (4.539229ms)
+✔ a missing </body> tag fails before writing output (2.487537ms)
+✔ no file in the repo mentions the previous analytics vendor (1.106899ms)
+✔ index.html: metadata, local links and launch copy are valid (1.749029ms)
+✔ download.html: metadata, local links and launch copy are valid (0.591055ms)
+✔ privacy.html: metadata, local links and launch copy are valid (0.451234ms)
+✔ changelog.html: metadata, local links and launch copy are valid (1.936592ms)
+✔ download page is ready for v0.4.0 assets and install steps (0.358267ms)
+✔ homepage download buttons and beta label use v0.4.0 (0.251575ms)
+✔ homepage presents the launch features without an upcoming-release teaser (0.729404ms)
+✔ changelog carries the v0.2.0 release notes (0.43884ms)
+✔ install guide describes the v0.3 in-app cleanup download, not manual Import (0.38109ms)
+✔ v0.4 release notes cover merged changes and sit above v0.3 (0.573883ms)
+✔ v0.3 launch notes cover merged changes and preserve historical v0.2 downloads (0.649796ms)
+✔ privacy covers both local models, plain-text history and temporary clipboard use (0.302066ms)
+✔ no stale pre-release copy remains (0.374526ms)
+✔ build publishes only the website, never local tokens, docs or scripts (46.576438ms)
+✔ favicon retains the app brand colors after migration (0.172817ms)
+✔ no file still points at the old Vercel subdomain or previous GitHub owner (0.776291ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 179.430649
+OK: no PLACEHOLDER markers found.
+EXIT check: 0
+===== npm run build =====
+
+> voxloom-site@1.0.0 build
+> node scripts/build.mjs
+
+Built 10 static files in public/.
+EXIT build: 0
+===== public listing =====
+public/apple-touch-icon.png
+public/assets/og.png
+public/base.css
+public/changelog.html
+public/download.html
+public/favicon.ico
+public/favicon.svg
+public/home.css
+public/index.html
+public/privacy.html

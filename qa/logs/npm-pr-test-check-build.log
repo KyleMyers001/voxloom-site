@@ -1,0 +1,117 @@
+===== NODE v24.20.0 NPM 11.19.0 =====
+===== npm test =====
+
+> voxloom-site@1.0.0 test
+> node --test tests/*.test.mjs
+
+✔ source privacy.html keeps the card behind a build marker and does not ship the claim (1.318064ms)
+✔ disabled build matches source, with only the analytics marker stripped from privacy.html (48.028428ms)
+✔ enabled build injects one script plus stub per page and the privacy card (45.805529ms)
+✔ invalid VOXLOOM_ANALYTICS values fail before writing output (14.000909ms)
+✔ build with the flag throws if the last-updated date is missing and leaves output untouched (7.250049ms)
+Built 13 static files in public/.
+✔ marker replacement is checked, consumes leading indentation, and works without a trailing newline (9.648334ms)
+✔ a missing analytics marker fails before writing output (4.206149ms)
+✔ a missing </body> tag fails before writing output (2.86187ms)
+✔ no file in the repo mentions the previous analytics vendor (0.890636ms)
+✔ favicon.svg is byte-identical to the #8 asset (2.108635ms)
+✔ favicon.ico is byte-identical to the #8 asset (0.257183ms)
+✔ icon-192.png and icon-512.png are opaque full-bleed tiles (17.531648ms)
+✔ manifest.webmanifest is valid and its icon files exist (10.616203ms)
+✔ every page links the manifest and keeps the #8 icon markup plus the 192 PNG (0.357732ms)
+✔ index.html: metadata, local links and launch copy are valid (1.766606ms)
+✔ download.html: metadata, local links and launch copy are valid (0.621157ms)
+✔ privacy.html: metadata, local links and launch copy are valid (0.304458ms)
+✔ changelog.html: metadata, local links and launch copy are valid (1.409047ms)
+✔ download page is ready for v0.4.0 assets and install steps (0.309165ms)
+✔ homepage download buttons and beta label use v0.4.0 (0.187918ms)
+✔ homepage presents the launch features without an upcoming-release teaser (0.613106ms)
+✔ changelog carries the v0.2.0 release notes (0.284915ms)
+✔ install guide describes the v0.3 in-app cleanup download, not manual Import (0.239879ms)
+✔ v0.4 release notes cover merged changes and sit above v0.3 (0.400866ms)
+✔ v0.3 launch notes cover merged changes and preserve historical v0.2 downloads (0.44896ms)
+✔ privacy covers both local models, plain-text history and temporary clipboard use (0.223651ms)
+✔ no stale pre-release copy remains (0.278769ms)
+✔ build publishes only the website, never local tokens, docs or scripts (43.583914ms)
+✔ favicon retains the app brand colors after migration (0.15501ms)
+✔ no file still points at the old Vercel subdomain or previous GitHub owner (0.849568ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 193.121829
+EXIT test: 0
+===== npm run check =====
+
+> voxloom-site@1.0.0 check
+> npm test && bash scripts/check-placeholders.sh
+
+
+> voxloom-site@1.0.0 test
+> node --test tests/*.test.mjs
+
+✔ source privacy.html keeps the card behind a build marker and does not ship the claim (1.487483ms)
+✔ disabled build matches source, with only the analytics marker stripped from privacy.html (49.398067ms)
+✔ enabled build injects one script plus stub per page and the privacy card (35.936099ms)
+✔ invalid VOXLOOM_ANALYTICS values fail before writing output (18.504024ms)
+✔ build with the flag throws if the last-updated date is missing and leaves output untouched (9.634118ms)
+Built 13 static files in public/.
+✔ marker replacement is checked, consumes leading indentation, and works without a trailing newline (13.593234ms)
+✔ a missing analytics marker fails before writing output (7.573906ms)
+✔ a missing </body> tag fails before writing output (3.297266ms)
+✔ no file in the repo mentions the previous analytics vendor (0.967043ms)
+✔ favicon.svg is byte-identical to the #8 asset (0.895535ms)
+✔ favicon.ico is byte-identical to the #8 asset (0.161079ms)
+✔ icon-192.png and icon-512.png are opaque full-bleed tiles (11.428666ms)
+✔ manifest.webmanifest is valid and its icon files exist (5.252469ms)
+✔ every page links the manifest and keeps the #8 icon markup plus the 192 PNG (0.31517ms)
+✔ index.html: metadata, local links and launch copy are valid (1.471037ms)
+✔ download.html: metadata, local links and launch copy are valid (0.401428ms)
+✔ privacy.html: metadata, local links and launch copy are valid (0.270128ms)
+✔ changelog.html: metadata, local links and launch copy are valid (1.101704ms)
+✔ download page is ready for v0.4.0 assets and install steps (0.290806ms)
+✔ homepage download buttons and beta label use v0.4.0 (0.17964ms)
+✔ homepage presents the launch features without an upcoming-release teaser (0.649502ms)
+✔ changelog carries the v0.2.0 release notes (0.293606ms)
+✔ install guide describes the v0.3 in-app cleanup download, not manual Import (0.234848ms)
+✔ v0.4 release notes cover merged changes and sit above v0.3 (0.366782ms)
+✔ v0.3 launch notes cover merged changes and preserve historical v0.2 downloads (0.400939ms)
+✔ privacy covers both local models, plain-text history and temporary clipboard use (0.179878ms)
+✔ no stale pre-release copy remains (0.272181ms)
+✔ build publishes only the website, never local tokens, docs or scripts (40.450091ms)
+✔ favicon retains the app brand colors after migration (0.161967ms)
+✔ no file still points at the old Vercel subdomain or previous GitHub owner (0.775946ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 218.642573
+OK: no PLACEHOLDER markers found.
+EXIT check: 0
+===== npm run build =====
+
+> voxloom-site@1.0.0 build
+> node scripts/build.mjs
+
+Built 13 static files in public/.
+EXIT build: 0
+===== public listing =====
+public/apple-touch-icon.png
+public/assets/og.png
+public/base.css
+public/changelog.html
+public/download.html
+public/favicon.ico
+public/favicon.svg
+public/home.css
+public/icon-192.png
+public/icon-512.png
+public/index.html
+public/manifest.webmanifest
+public/privacy.html

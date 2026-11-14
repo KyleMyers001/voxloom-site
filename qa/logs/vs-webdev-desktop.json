@@ -1,0 +1,242 @@
+[
+  {
+    "file": "desktop-ico-16css-dpr1-dark-before.png",
+    "webdev_before_size": [
+      16,
+      16
+    ],
+    "ours_size": [
+      16,
+      16
+    ],
+    "webdev_before_eq_after": true,
+    "ours_main_eq_pr": true,
+    "ours_eq_webdev_before": 0,
+    "ours_eq_webdev_after": 0
+  },
+  {
+    "file": "desktop-ico-16css-dpr1-light-before.png",
+    "webdev_before_size": [
+      16,
+      16
+    ],
+    "ours_size": [
+      16,
+      16
+    ],
+    "webdev_before_eq_after": true,
+    "ours_main_eq_pr": true,
+    "ours_eq_webdev_before": 0,
+    "ours_eq_webdev_after": 0
+  },
+  {
+    "file": "desktop-ico-16css-dpr2-dark-before.png",
+    "webdev_before_size": [
+      32,
+      32
+    ],
+    "ours_size": [
+      32,
+      32
+    ],
+    "webdev_before_eq_after": true,
+    "ours_main_eq_pr": true,
+    "ours_eq_webdev_before": 0,
+    "ours_eq_webdev_after": 0
+  },
+  {
+    "file": "desktop-ico-16css-dpr2-light-before.png",
+    "webdev_before_size": [
+      32,
+      32
+    ],
+    "ours_size": [
+      32,
+      32
+    ],
+    "webdev_before_eq_after": true,
+    "ours_main_eq_pr": true,
+    "ours_eq_webdev_before": 0,
+    "ours_eq_webdev_after": 0
+  },
+  {
+    "file": "desktop-ico-32css-dpr1-dark-before.png",
+    "webdev_before_size": [
+      32,
+      32
+    ],
+    "ours_size": [
+      32,
+      32
+    ],
+    "webdev_before_eq_after": true,
+    "ours_main_eq_pr": true,
+    "ours_eq_webdev_before": 0,
+    "ours_eq_webdev_after": 0
+  },
+  {
+    "file": "desktop-ico-32css-dpr1-light-before.png",
+    "webdev_before_size": [
+      32,
+      32
+    ],
+    "ours_size": [
+      32,
+      32
+    ],
+    "webdev_before_eq_after": true,
+    "ours_main_eq_pr": true,
+    "ours_eq_webdev_before": 0,
+    "ours_eq_webdev_after": 0
+  },
+  {
+    "file": "desktop-ico-32css-dpr2-dark-before.png",
+    "webdev_before_size": [
+      64,
+      64
+    ],
+    "ours_size": [
+      64,
+      64
+    ],
+    "webdev_before_eq_after": true,
+    "ours_main_eq_pr": true,
+    "ours_eq_webdev_before": 0,
+    "ours_eq_webdev_after": 0
+  },
+  {
+    "file": "desktop-ico-32css-dpr2-light-before.png",
+    "webdev_before_size": [
+      64,
+      64
+    ],
+    "ours_size": [
+      64,
+      64
+    ],
+    "webdev_before_eq_after": true,
+    "ours_main_eq_pr": true,
+    "ours_eq_webdev_before": 0,
+    "ours_eq_webdev_after": 0
+  },
+  {
+    "file": "desktop-svg-16css-dpr1-dark-before.png",
+    "webdev_before_size": [
+      16,
+      16
+    ],
+    "ours_size": [
+      16,
+      16
+    ],
+    "webdev_before_eq_after": true,
+    "ours_main_eq_pr": true,
+    "ours_eq_webdev_before": 0,
+    "ours_eq_webdev_after": 0
+  },
+  {
+    "file": "desktop-svg-16css-dpr1-light-before.png",
+    "webdev_before_size": [
+      16,
+      16
+    ],
+    "ours_size": [
+      16,
+      16
+    ],
+    "webdev_before_eq_after": true,
+    "ours_main_eq_pr": true,
+    "ours_eq_webdev_before": 0,
+    "ours_eq_webdev_after": 0
+  },
+  {
+    "file": "desktop-svg-16css-dpr2-dark-before.png",
+    "webdev_before_size": [
+      32,
+      32
+    ],
+    "ours_size": [
+      32,
+      32
+    ],
+    "webdev_before_eq_after": true,
+    "ours_main_eq_pr": true,
+    "ours_eq_webdev_before": 0,
+    "ours_eq_webdev_after": 0
+  },
+  {
+    "file": "desktop-svg-16css-dpr2-light-before.png",
+    "webdev_before_size": [
+      32,
+      32
+    ],
+    "ours_size": [
+      32,
+      32
+    ],
+    "webdev_before_eq_after": true,
+    "ours_main_eq_pr": true,
+    "ours_eq_webdev_before": 0,
+    "ours_eq_webdev_after": 0
+  },
+  {
+    "file": "desktop-svg-32css-dpr1-dark-before.png",
+    "webdev_before_size": [
+      32,
+      32
+    ],
+    "ours_size": [
+      32,
+      32
+    ],
+    "webdev_before_eq_after": true,
+    "ours_main_eq_pr": true,
+    "ours_eq_webdev_before": 0,
+    "ours_eq_webdev_after": 0
+  },
+  {
+    "file": "desktop-svg-32css-dpr1-light-before.png",
+    "webdev_before_size": [
+      32,
+      32
+    ],
+    "ours_size": [
+      32,
+      32
+    ],
+    "webdev_before_eq_after": true,
+    "ours_main_eq_pr": true,
+    "ours_eq_webdev_before": 0,
+    "ours_eq_webdev_after": 0
+  },
+  {
+    "file": "desktop-svg-32css-dpr2-dark-before.png",
+    "webdev_before_size": [
+      64,
+      64
+    ],
+    "ours_size": [
+      64,
+      64
+    ],
+    "webdev_before_eq_after": true,
+    "ours_main_eq_pr": true,
+    "ours_eq_webdev_before": 0,
+    "ours_eq_webdev_after": 0
+  },
+  {
+    "file": "desktop-svg-32css-dpr2-light-before.png",
+    "webdev_before_size": [
+      64,
+      64
+    ],
+    "ours_size": [
+      64,
+      64
+    ],
+    "webdev_before_eq_after": true,
+    "ours_main_eq_pr": true,
+    "ours_eq_webdev_before": 0,
+    "ours_eq_webdev_after": 0
+  }
+]

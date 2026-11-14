@@ -1,0 +1,1014 @@
+{
+  "chrome": {
+    "port_main": 35659,
+    "port_pr": 47311,
+    "debug_port": 47411,
+    "chrome_version_cmd": "Google Chrome 156.0.8078.47",
+    "ws": "connected"
+  },
+  "main": [
+    {
+      "label": "main",
+      "page": "http://127.0.0.1:35659/index.html",
+      "requests": [
+        {
+          "url": "http://127.0.0.1:35659/index.html",
+          "type": "Document",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:35659/base.css",
+          "type": "Stylesheet",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:35659/home.css",
+          "type": "Stylesheet",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:35659/favicon.svg",
+          "type": "Other",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:35659/favicon.ico",
+          "type": "Other",
+          "method": "GET"
+        }
+      ],
+      "icon_hits": [
+        "http://127.0.0.1:35659/favicon.svg",
+        "http://127.0.0.1:35659/favicon.ico"
+      ],
+      "links": [
+        {
+          "rel": "canonical",
+          "href": "https://voxloom.app/",
+          "type": "",
+          "sizes": ""
+        },
+        {
+          "rel": "icon",
+          "href": "http://127.0.0.1:35659/favicon.ico",
+          "type": "",
+          "sizes": "any"
+        },
+        {
+          "rel": "icon",
+          "href": "http://127.0.0.1:35659/favicon.svg",
+          "type": "image/svg+xml",
+          "sizes": ""
+        },
+        {
+          "rel": "apple-touch-icon",
+          "href": "http://127.0.0.1:35659/apple-touch-icon.png",
+          "type": "",
+          "sizes": ""
+        },
+        {
+          "rel": "stylesheet",
+          "href": "http://127.0.0.1:35659/base.css",
+          "type": "",
+          "sizes": ""
+        },
+        {
+          "rel": "stylesheet",
+          "href": "http://127.0.0.1:35659/home.css",
+          "type": "",
+          "sizes": ""
+        }
+      ],
+      "captured": {
+        "16@1x": {
+          "size": [
+            780,
+            493
+          ],
+          "mode": "RGB"
+        },
+        "16@2x": {
+          "size": [
+            780,
+            493
+          ],
+          "mode": "RGB"
+        },
+        "32@1x": {
+          "size": [
+            780,
+            493
+          ],
+          "mode": "RGB"
+        },
+        "32@2x": {
+          "size": [
+            780,
+            493
+          ],
+          "mode": "RGB"
+        }
+      }
+    },
+    {
+      "label": "main",
+      "page": "http://127.0.0.1:35659/download.html",
+      "requests": [
+        {
+          "url": "http://127.0.0.1:35659/download.html",
+          "type": "Document",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:35659/base.css",
+          "type": "Stylesheet",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:35659/favicon.svg",
+          "type": "Other",
+          "method": "GET"
+        }
+      ],
+      "icon_hits": [
+        "http://127.0.0.1:35659/favicon.svg"
+      ],
+      "links": [
+        {
+          "rel": "canonical",
+          "href": "https://voxloom.app/download.html",
+          "type": "",
+          "sizes": ""
+        },
+        {
+          "rel": "icon",
+          "href": "http://127.0.0.1:35659/favicon.ico",
+          "type": "",
+          "sizes": "any"
+        },
+        {
+          "rel": "icon",
+          "href": "http://127.0.0.1:35659/favicon.svg",
+          "type": "image/svg+xml",
+          "sizes": ""
+        },
+        {
+          "rel": "apple-touch-icon",
+          "href": "http://127.0.0.1:35659/apple-touch-icon.png",
+          "type": "",
+          "sizes": ""
+        },
+        {
+          "rel": "stylesheet",
+          "href": "http://127.0.0.1:35659/base.css",
+          "type": "",
+          "sizes": ""
+        }
+      ],
+      "captured": {
+        "16@1x": {
+          "size": [
+            780,
+            493
+          ],
+          "mode": "RGB"
+        },
+        "16@2x": {
+          "size": [
+            780,
+            493
+          ],
+          "mode": "RGB"
+        },
+        "32@1x": {
+          "size": [
+            780,
+            493
+          ],
+          "mode": "RGB"
+        },
+        "32@2x": {
+          "size": [
+            780,
+            493
+          ],
+          "mode": "RGB"
+        }
+      }
+    },
+    {
+      "label": "main",
+      "page": "http://127.0.0.1:35659/privacy.html",
+      "requests": [
+        {
+          "url": "http://127.0.0.1:35659/privacy.html",
+          "type": "Document",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:35659/base.css",
+          "type": "Stylesheet",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:35659/favicon.svg",
+          "type": "Other",
+          "method": "GET"
+        }
+      ],
+      "icon_hits": [
+        "http://127.0.0.1:35659/favicon.svg"
+      ],
+      "links": [
+        {
+          "rel": "canonical",
+          "href": "https://voxloom.app/privacy.html",
+          "type": "",
+          "sizes": ""
+        },
+        {
+          "rel": "icon",
+          "href": "http://127.0.0.1:35659/favicon.ico",
+          "type": "",
+          "sizes": "any"
+        },
+        {
+          "rel": "icon",
+          "href": "http://127.0.0.1:35659/favicon.svg",
+          "type": "image/svg+xml",
+          "sizes": ""
+        },
+        {
+          "rel": "apple-touch-icon",
+          "href": "http://127.0.0.1:35659/apple-touch-icon.png",
+          "type": "",
+          "sizes": ""
+        },
+        {
+          "rel": "stylesheet",
+          "href": "http://127.0.0.1:35659/base.css",
+          "type": "",
+          "sizes": ""
+        }
+      ],
+      "captured": {
+        "16@1x": {
+          "size": [
+            780,
+            493
+          ],
+          "mode": "RGB"
+        },
+        "16@2x": {
+          "size": [
+            780,
+            493
+          ],
+          "mode": "RGB"
+        },
+        "32@1x": {
+          "size": [
+            780,
+            493
+          ],
+          "mode": "RGB"
+        },
+        "32@2x": {
+          "size": [
+            780,
+            493
+          ],
+          "mode": "RGB"
+        }
+      }
+    },
+    {
+      "label": "main",
+      "page": "http://127.0.0.1:35659/changelog.html",
+      "requests": [
+        {
+          "url": "http://127.0.0.1:35659/changelog.html",
+          "type": "Document",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:35659/base.css",
+          "type": "Stylesheet",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:35659/favicon.svg",
+          "type": "Other",
+          "method": "GET"
+        }
+      ],
+      "icon_hits": [
+        "http://127.0.0.1:35659/favicon.svg"
+      ],
+      "links": [
+        {
+          "rel": "canonical",
+          "href": "https://voxloom.app/changelog.html",
+          "type": "",
+          "sizes": ""
+        },
+        {
+          "rel": "icon",
+          "href": "http://127.0.0.1:35659/favicon.ico",
+          "type": "",
+          "sizes": "any"
+        },
+        {
+          "rel": "icon",
+          "href": "http://127.0.0.1:35659/favicon.svg",
+          "type": "image/svg+xml",
+          "sizes": ""
+        },
+        {
+          "rel": "apple-touch-icon",
+          "href": "http://127.0.0.1:35659/apple-touch-icon.png",
+          "type": "",
+          "sizes": ""
+        },
+        {
+          "rel": "stylesheet",
+          "href": "http://127.0.0.1:35659/base.css",
+          "type": "",
+          "sizes": ""
+        }
+      ],
+      "captured": {
+        "16@1x": {
+          "size": [
+            780,
+            493
+          ],
+          "mode": "RGB"
+        },
+        "16@2x": {
+          "size": [
+            780,
+            493
+          ],
+          "mode": "RGB"
+        },
+        "32@1x": {
+          "size": [
+            780,
+            493
+          ],
+          "mode": "RGB"
+        },
+        "32@2x": {
+          "size": [
+            780,
+            493
+          ],
+          "mode": "RGB"
+        }
+      }
+    }
+  ],
+  "pr": [
+    {
+      "label": "pr",
+      "page": "http://127.0.0.1:47311/index.html",
+      "requests": [
+        {
+          "url": "http://127.0.0.1:47311/index.html",
+          "type": "Document",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:47311/base.css",
+          "type": "Stylesheet",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:47311/home.css",
+          "type": "Stylesheet",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:47311/favicon.svg",
+          "type": "Other",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:47311/favicon.ico",
+          "type": "Other",
+          "method": "GET"
+        }
+      ],
+      "icon_hits": [
+        "http://127.0.0.1:47311/favicon.svg",
+        "http://127.0.0.1:47311/favicon.ico"
+      ],
+      "links": [
+        {
+          "rel": "canonical",
+          "href": "https://voxloom.app/",
+          "type": "",
+          "sizes": ""
+        },
+        {
+          "rel": "icon",
+          "href": "http://127.0.0.1:47311/favicon.ico",
+          "type": "",
+          "sizes": "any"
+        },
+        {
+          "rel": "icon",
+          "href": "http://127.0.0.1:47311/favicon.svg",
+          "type": "image/svg+xml",
+          "sizes": ""
+        },
+        {
+          "rel": "apple-touch-icon",
+          "href": "http://127.0.0.1:47311/apple-touch-icon.png",
+          "type": "",
+          "sizes": ""
+        },
+        {
+          "rel": "stylesheet",
+          "href": "http://127.0.0.1:47311/base.css",
+          "type": "",
+          "sizes": ""
+        },
+        {
+          "rel": "stylesheet",
+          "href": "http://127.0.0.1:47311/home.css",
+          "type": "",
+          "sizes": ""
+        }
+      ],
+      "captured": {
+        "16@1x": {
+          "size": [
+            780,
+            493
+          ],
+          "mode": "RGB"
+        },
+        "16@2x": {
+          "size": [
+            780,
+            493
+          ],
+          "mode": "RGB"
+        },
+        "32@1x": {
+          "size": [
+            780,
+            493
+          ],
+          "mode": "RGB"
+        },
+        "32@2x": {
+          "size": [
+            780,
+            493
+          ],
+          "mode": "RGB"
+        }
+      }
+    },
+    {
+      "label": "pr",
+      "page": "http://127.0.0.1:47311/download.html",
+      "requests": [
+        {
+          "url": "http://127.0.0.1:47311/download.html",
+          "type": "Document",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:47311/base.css",
+          "type": "Stylesheet",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:47311/favicon.svg",
+          "type": "Other",
+          "method": "GET"
+        }
+      ],
+      "icon_hits": [
+        "http://127.0.0.1:47311/favicon.svg"
+      ],
+      "links": [
+        {
+          "rel": "canonical",
+          "href": "https://voxloom.app/download.html",
+          "type": "",
+          "sizes": ""
+        },
+        {
+          "rel": "icon",
+          "href": "http://127.0.0.1:47311/favicon.ico",
+          "type": "",
+          "sizes": "any"
+        },
+        {
+          "rel": "icon",
+          "href": "http://127.0.0.1:47311/favicon.svg",
+          "type": "image/svg+xml",
+          "sizes": ""
+        },
+        {
+          "rel": "apple-touch-icon",
+          "href": "http://127.0.0.1:47311/apple-touch-icon.png",
+          "type": "",
+          "sizes": ""
+        },
+        {
+          "rel": "stylesheet",
+          "href": "http://127.0.0.1:47311/base.css",
+          "type": "",
+          "sizes": ""
+        }
+      ],
+      "captured": {
+        "16@1x": {
+          "size": [
+            780,
+            493
+          ],
+          "mode": "RGB"
+        },
+        "16@2x": {
+          "size": [
+            780,
+            493
+          ],
+          "mode": "RGB"
+        },
+        "32@1x": {
+          "size": [
+            780,
+            493
+          ],
+          "mode": "RGB"
+        },
+        "32@2x": {
+          "size": [
+            780,
+            493
+          ],
+          "mode": "RGB"
+        }
+      }
+    },
+    {
+      "label": "pr",
+      "page": "http://127.0.0.1:47311/privacy.html",
+      "requests": [
+        {
+          "url": "http://127.0.0.1:47311/privacy.html",
+          "type": "Document",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:47311/base.css",
+          "type": "Stylesheet",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:47311/favicon.svg",
+          "type": "Other",
+          "method": "GET"
+        }
+      ],
+      "icon_hits": [
+        "http://127.0.0.1:47311/favicon.svg"
+      ],
+      "links": [
+        {
+          "rel": "canonical",
+          "href": "https://voxloom.app/privacy.html",
+          "type": "",
+          "sizes": ""
+        },
+        {
+          "rel": "icon",
+          "href": "http://127.0.0.1:47311/favicon.ico",
+          "type": "",
+          "sizes": "any"
+        },
+        {
+          "rel": "icon",
+          "href": "http://127.0.0.1:47311/favicon.svg",
+          "type": "image/svg+xml",
+          "sizes": ""
+        },
+        {
+          "rel": "apple-touch-icon",
+          "href": "http://127.0.0.1:47311/apple-touch-icon.png",
+          "type": "",
+          "sizes": ""
+        },
+        {
+          "rel": "stylesheet",
+          "href": "http://127.0.0.1:47311/base.css",
+          "type": "",
+          "sizes": ""
+        }
+      ],
+      "captured": {
+        "16@1x": {
+          "size": [
+            780,
+            493
+          ],
+          "mode": "RGB"
+        },
+        "16@2x": {
+          "size": [
+            780,
+            493
+          ],
+          "mode": "RGB"
+        },
+        "32@1x": {
+          "size": [
+            780,
+            493
+          ],
+          "mode": "RGB"
+        },
+        "32@2x": {
+          "size": [
+            780,
+            493
+          ],
+          "mode": "RGB"
+        }
+      }
+    },
+    {
+      "label": "pr",
+      "page": "http://127.0.0.1:47311/changelog.html",
+      "requests": [
+        {
+          "url": "http://127.0.0.1:47311/changelog.html",
+          "type": "Document",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:47311/base.css",
+          "type": "Stylesheet",
+          "method": "GET"
+        },
+        {
+          "url": "http://127.0.0.1:47311/favicon.svg",
+          "type": "Other",
+          "method": "GET"
+        }
+      ],
+      "icon_hits": [
+        "http://127.0.0.1:47311/favicon.svg"
+      ],
+      "links": [
+        {
+          "rel": "canonical",
+          "href": "https://voxloom.app/changelog.html",
+          "type": "",
+          "sizes": ""
+        },
+        {
+          "rel": "icon",
+          "href": "http://127.0.0.1:47311/favicon.ico",
+          "type": "",
+          "sizes": "any"
+        },
+        {
+          "rel": "icon",
+          "href": "http://127.0.0.1:47311/favicon.svg",
+          "type": "image/svg+xml",
+          "sizes": ""
+        },
+        {
+          "rel": "apple-touch-icon",
+          "href": "http://127.0.0.1:47311/apple-touch-icon.png",
+          "type": "",
+          "sizes": ""
+        },
+        {
+          "rel": "stylesheet",
+          "href": "http://127.0.0.1:47311/base.css",
+          "type": "",
+          "sizes": ""
+        }
+      ],
+      "captured": {
+        "16@1x": {
+          "size": [
+            780,
+            493
+          ],
+          "mode": "RGB"
+        },
+        "16@2x": {
+          "size": [
+            780,
+            493
+          ],
+          "mode": "RGB"
+        },
+        "32@1x": {
+          "size": [
+            780,
+            493
+          ],
+          "mode": "RGB"
+        },
+        "32@2x": {
+          "size": [
+            780,
+            493
+          ],
+          "mode": "RGB"
+        }
+      }
+    }
+  ],
+  "server_log_main": {
+    "all_paths": [
+      "/index.html",
+      "/base.css",
+      "/home.css",
+      "/favicon.svg",
+      "/favicon.ico",
+      "/download.html",
+      "/base.css",
+      "/favicon.svg",
+      "/privacy.html",
+      "/base.css",
+      "/favicon.svg",
+      "/changelog.html",
+      "/base.css",
+      "/favicon.svg"
+    ],
+    "icon_or_manifest_paths": [
+      "/favicon.svg",
+      "/favicon.ico",
+      "/favicon.svg",
+      "/favicon.svg",
+      "/favicon.svg"
+    ],
+    "count": 14
+  },
+  "server_log_pr": {
+    "all_paths": [
+      "/index.html",
+      "/base.css",
+      "/home.css",
+      "/favicon.svg",
+      "/favicon.ico",
+      "/download.html",
+      "/base.css",
+      "/favicon.svg",
+      "/privacy.html",
+      "/base.css",
+      "/favicon.svg",
+      "/changelog.html",
+      "/base.css",
+      "/favicon.svg"
+    ],
+    "icon_or_manifest_paths": [
+      "/favicon.svg",
+      "/favicon.ico",
+      "/favicon.svg",
+      "/favicon.svg",
+      "/favicon.svg"
+    ],
+    "count": 14
+  },
+  "server_log_raw": [
+    {
+      "t": 1794594534.5390656,
+      "label": "main",
+      "method": "GET",
+      "path": "/index.html",
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "referer": ""
+    },
+    {
+      "t": 1794594534.5527983,
+      "label": "main",
+      "method": "GET",
+      "path": "/base.css",
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "referer": "http://127.0.0.1:35659/index.html"
+    },
+    {
+      "t": 1794594534.5529575,
+      "label": "main",
+      "method": "GET",
+      "path": "/home.css",
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "referer": "http://127.0.0.1:35659/index.html"
+    },
+    {
+      "t": 1794594534.666359,
+      "label": "main",
+      "method": "GET",
+      "path": "/favicon.svg",
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "referer": "http://127.0.0.1:35659/index.html"
+    },
+    {
+      "t": 1794594534.6729684,
+      "label": "main",
+      "method": "GET",
+      "path": "/favicon.ico",
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "referer": "http://127.0.0.1:35659/index.html"
+    },
+    {
+      "t": 1794594540.7108517,
+      "label": "main",
+      "method": "GET",
+      "path": "/download.html",
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "referer": ""
+    },
+    {
+      "t": 1794594540.7147083,
+      "label": "main",
+      "method": "GET",
+      "path": "/base.css",
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "referer": "http://127.0.0.1:35659/download.html"
+    },
+    {
+      "t": 1794594540.730411,
+      "label": "main",
+      "method": "GET",
+      "path": "/favicon.svg",
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "referer": "http://127.0.0.1:35659/download.html"
+    },
+    {
+      "t": 1794594546.8762186,
+      "label": "main",
+      "method": "GET",
+      "path": "/privacy.html",
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "referer": ""
+    },
+    {
+      "t": 1794594546.879907,
+      "label": "main",
+      "method": "GET",
+      "path": "/base.css",
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "referer": "http://127.0.0.1:35659/privacy.html"
+    },
+    {
+      "t": 1794594546.9104996,
+      "label": "main",
+      "method": "GET",
+      "path": "/favicon.svg",
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "referer": "http://127.0.0.1:35659/privacy.html"
+    },
+    {
+      "t": 1794594553.0446765,
+      "label": "main",
+      "method": "GET",
+      "path": "/changelog.html",
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "referer": ""
+    },
+    {
+      "t": 1794594553.0492525,
+      "label": "main",
+      "method": "GET",
+      "path": "/base.css",
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "referer": "http://127.0.0.1:35659/changelog.html"
+    },
+    {
+      "t": 1794594553.0692847,
+      "label": "main",
+      "method": "GET",
+      "path": "/favicon.svg",
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "referer": "http://127.0.0.1:35659/changelog.html"
+    },
+    {
+      "t": 1794594559.223074,
+      "label": "pr",
+      "method": "GET",
+      "path": "/index.html",
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "referer": ""
+    },
+    {
+      "t": 1794594559.228263,
+      "label": "pr",
+      "method": "GET",
+      "path": "/base.css",
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "referer": "http://127.0.0.1:47311/index.html"
+    },
+    {
+      "t": 1794594559.228693,
+      "label": "pr",
+      "method": "GET",
+      "path": "/home.css",
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "referer": "http://127.0.0.1:47311/index.html"
+    },
+    {
+      "t": 1794594559.24658,
+      "label": "pr",
+      "method": "GET",
+      "path": "/favicon.svg",
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "referer": "http://127.0.0.1:47311/index.html"
+    },
+    {
+      "t": 1794594559.2517328,
+      "label": "pr",
+      "method": "GET",
+      "path": "/favicon.ico",
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "referer": "http://127.0.0.1:47311/index.html"
+    },
+    {
+      "t": 1794594565.397148,
+      "label": "pr",
+      "method": "GET",
+      "path": "/download.html",
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "referer": ""
+    },
+    {
+      "t": 1794594565.4020128,
+      "label": "pr",
+      "method": "GET",
+      "path": "/base.css",
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "referer": "http://127.0.0.1:47311/download.html"
+    },
+    {
+      "t": 1794594565.4166858,
+      "label": "pr",
+      "method": "GET",
+      "path": "/favicon.svg",
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "referer": "http://127.0.0.1:47311/download.html"
+    },
+    {
+      "t": 1794594571.575034,
+      "label": "pr",
+      "method": "GET",
+      "path": "/privacy.html",
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "referer": ""
+    },
+    {
+      "t": 1794594571.5793228,
+      "label": "pr",
+      "method": "GET",
+      "path": "/base.css",
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "referer": "http://127.0.0.1:47311/privacy.html"
+    },
+    {
+      "t": 1794594571.592207,
+      "label": "pr",
+      "method": "GET",
+      "path": "/favicon.svg",
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "referer": "http://127.0.0.1:47311/privacy.html"
+    },
+    {
+      "t": 1794594577.7466516,
+      "label": "pr",
+      "method": "GET",
+      "path": "/changelog.html",
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "referer": ""
+    },
+    {
+      "t": 1794594577.762282,
+      "label": "pr",
+      "method": "GET",
+      "path": "/base.css",
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "referer": "http://127.0.0.1:47311/changelog.html"
+    },
+    {
+      "t": 1794594577.7767997,
+      "label": "pr",
+      "method": "GET",
+      "path": "/favicon.svg",
+      "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "referer": "http://127.0.0.1:47311/changelog.html"
+    }
+  ],
+  "note": "Headless Chrome has no visible tab strip. chrome://favicon2 often renders a generic placeholder in this environment. Network.requestWillBeSent plus the logging HTTP server are the evidence of which icon URLs were fetched."
+}

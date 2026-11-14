@@ -1,0 +1,66 @@
+{
+  "kyle_48_corners": {
+    "tl": [
+      7,
+      7,
+      9
+    ],
+    "tr": [
+      7,
+      7,
+      9
+    ],
+    "bl": [
+      8,
+      8,
+      10
+    ],
+    "br": [
+      8,
+      8,
+      10
+    ],
+    "midtop": [
+      35,
+      33,
+      44
+    ]
+  },
+  "brave_192_to_48_corners": {
+    "tl": [
+      42,
+      42,
+      56
+    ],
+    "tr": [
+      42,
+      42,
+      56
+    ],
+    "bl": [
+      10,
+      10,
+      16
+    ],
+    "br": [
+      10,
+      10,
+      16
+    ],
+    "midtop": [
+      157,
+      157,
+      164
+    ]
+  },
+  "desktop_svg_before_after_max_channel_diff": 0,
+  "desktop_svg_and_ico_before_after_identical": true,
+  "icon_hits_before": [
+    "http://127.0.0.1:8765/favicon.svg",
+    "http://127.0.0.1:8765/favicon.ico"
+  ],
+  "icon_hits_after": [
+    "http://127.0.0.1:8766/favicon.svg",
+    "http://127.0.0.1:8766/favicon.ico"
+  ]
+}

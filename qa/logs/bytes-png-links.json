@@ -1,0 +1,311 @@
+{
+  "hashes": [
+    {
+      "file": "favicon.svg",
+      "pr_src": {
+        "sha256": "d7cbf5bb0dabf577f5faf484bd896e0b407b7b42b573bd4632a921d94340cb52",
+        "bytes": 1267
+      },
+      "pr_pub": {
+        "sha256": "d7cbf5bb0dabf577f5faf484bd896e0b407b7b42b573bd4632a921d94340cb52",
+        "bytes": 1267
+      },
+      "main_src": {
+        "sha256": "d7cbf5bb0dabf577f5faf484bd896e0b407b7b42b573bd4632a921d94340cb52",
+        "bytes": 1267
+      },
+      "main_pub": {
+        "sha256": "d7cbf5bb0dabf577f5faf484bd896e0b407b7b42b573bd4632a921d94340cb52",
+        "bytes": 1267
+      }
+    },
+    {
+      "file": "favicon.ico",
+      "pr_src": {
+        "sha256": "63ab5b798ad60428ef9533ad3a43cfe16c529aaa81670d787864dd0544f1a371",
+        "bytes": 4480
+      },
+      "pr_pub": {
+        "sha256": "63ab5b798ad60428ef9533ad3a43cfe16c529aaa81670d787864dd0544f1a371",
+        "bytes": 4480
+      },
+      "main_src": {
+        "sha256": "63ab5b798ad60428ef9533ad3a43cfe16c529aaa81670d787864dd0544f1a371",
+        "bytes": 4480
+      },
+      "main_pub": {
+        "sha256": "63ab5b798ad60428ef9533ad3a43cfe16c529aaa81670d787864dd0544f1a371",
+        "bytes": 4480
+      }
+    },
+    {
+      "file": "apple-touch-icon.png",
+      "pr_src": {
+        "sha256": "4b352daeb0b633dd58fe0e3d09d1b4d21bb07065d3353fbbf33ca2eb44b308f8",
+        "bytes": 8394
+      },
+      "pr_pub": {
+        "sha256": "4b352daeb0b633dd58fe0e3d09d1b4d21bb07065d3353fbbf33ca2eb44b308f8",
+        "bytes": 8394
+      },
+      "main_src": {
+        "sha256": "4b352daeb0b633dd58fe0e3d09d1b4d21bb07065d3353fbbf33ca2eb44b308f8",
+        "bytes": 8394
+      },
+      "main_pub": {
+        "sha256": "4b352daeb0b633dd58fe0e3d09d1b4d21bb07065d3353fbbf33ca2eb44b308f8",
+        "bytes": 8394
+      }
+    },
+    {
+      "file": "icon-192.png",
+      "pr_src": {
+        "sha256": "3dd17e4e55daed84ce5ba9155aefbc1e951eda7b9ea1da213de015a1570e6012",
+        "bytes": 8605
+      },
+      "pr_pub": {
+        "sha256": "3dd17e4e55daed84ce5ba9155aefbc1e951eda7b9ea1da213de015a1570e6012",
+        "bytes": 8605
+      },
+      "main_src": null,
+      "main_pub": null
+    },
+    {
+      "file": "icon-512.png",
+      "pr_src": {
+        "sha256": "fcecc89172aff4c073248d9bd609941f0ac9b8f3290b46362f9c665181bbf1cb",
+        "bytes": 28787
+      },
+      "pr_pub": {
+        "sha256": "fcecc89172aff4c073248d9bd609941f0ac9b8f3290b46362f9c665181bbf1cb",
+        "bytes": 28787
+      },
+      "main_src": null,
+      "main_pub": null
+    },
+    {
+      "file": "manifest.webmanifest",
+      "pr_src": {
+        "sha256": "e7e7164e22096082cb1dedba5b82d5fa7d7df32bcb0d5b7a30ff229e95208277",
+        "bytes": 317
+      },
+      "pr_pub": {
+        "sha256": "e7e7164e22096082cb1dedba5b82d5fa7d7df32bcb0d5b7a30ff229e95208277",
+        "bytes": 317
+      },
+      "main_src": null,
+      "main_pub": null
+    }
+  ],
+  "pngs": {
+    "icon-192.png": {
+      "size": [
+        192,
+        192
+      ],
+      "mode": "RGB",
+      "min_alpha": 255,
+      "note": "no alpha channel (color type 2 / RGB) \u2014 fully opaque",
+      "corners": {
+        "tl": [
+          42,
+          42,
+          56
+        ],
+        "tr": [
+          42,
+          42,
+          56
+        ],
+        "bl": [
+          10,
+          10,
+          16
+        ],
+        "br": [
+          10,
+          10,
+          16
+        ]
+      }
+    },
+    "icon-512.png": {
+      "size": [
+        512,
+        512
+      ],
+      "mode": "RGB",
+      "min_alpha": 255,
+      "note": "no alpha channel (color type 2 / RGB) \u2014 fully opaque",
+      "corners": {
+        "tl": [
+          42,
+          42,
+          56
+        ],
+        "tr": [
+          42,
+          42,
+          56
+        ],
+        "bl": [
+          10,
+          10,
+          16
+        ],
+        "br": [
+          10,
+          10,
+          16
+        ]
+      }
+    },
+    "apple-touch-icon.png": {
+      "size": [
+        180,
+        180
+      ],
+      "mode": "RGB",
+      "min_alpha": 255,
+      "note": "no alpha channel (color type 2 / RGB) \u2014 fully opaque",
+      "corners": {
+        "tl": [
+          42,
+          42,
+          56
+        ],
+        "tr": [
+          42,
+          42,
+          56
+        ],
+        "bl": [
+          10,
+          10,
+          16
+        ],
+        "br": [
+          10,
+          10,
+          16
+        ]
+      }
+    }
+  },
+  "manifest": {
+    "name": "Voxloom",
+    "short_name": "Voxloom",
+    "icons": [
+      {
+        "src": "icon-192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "icon-512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "theme_color": "#07070b",
+    "background_color": "#07070b"
+  },
+  "links": {
+    "index.html:pr_src": [
+      "<link rel=\"icon\" href=\"favicon.ico\" sizes=\"any\">",
+      "<link rel=\"icon\" href=\"icon-192.png\" type=\"image/png\" sizes=\"192x192\">",
+      "<link rel=\"icon\" href=\"favicon.svg\" type=\"image/svg+xml\">",
+      "<link rel=\"apple-touch-icon\" href=\"apple-touch-icon.png\">",
+      "<link rel=\"manifest\" href=\"manifest.webmanifest\">"
+    ],
+    "index.html:pr_pub": [
+      "<link rel=\"icon\" href=\"favicon.ico\" sizes=\"any\">",
+      "<link rel=\"icon\" href=\"icon-192.png\" type=\"image/png\" sizes=\"192x192\">",
+      "<link rel=\"icon\" href=\"favicon.svg\" type=\"image/svg+xml\">",
+      "<link rel=\"apple-touch-icon\" href=\"apple-touch-icon.png\">",
+      "<link rel=\"manifest\" href=\"manifest.webmanifest\">"
+    ],
+    "index.html:main_src": [
+      "<link rel=\"icon\" href=\"favicon.ico\" sizes=\"any\">",
+      "<link rel=\"icon\" href=\"favicon.svg\" type=\"image/svg+xml\">",
+      "<link rel=\"apple-touch-icon\" href=\"apple-touch-icon.png\">"
+    ],
+    "index.html:main_pub": [
+      "<link rel=\"icon\" href=\"favicon.ico\" sizes=\"any\">",
+      "<link rel=\"icon\" href=\"favicon.svg\" type=\"image/svg+xml\">",
+      "<link rel=\"apple-touch-icon\" href=\"apple-touch-icon.png\">"
+    ],
+    "download.html:pr_src": [
+      "<link rel=\"icon\" href=\"favicon.ico\" sizes=\"any\">",
+      "<link rel=\"icon\" href=\"icon-192.png\" type=\"image/png\" sizes=\"192x192\">",
+      "<link rel=\"icon\" href=\"favicon.svg\" type=\"image/svg+xml\">",
+      "<link rel=\"apple-touch-icon\" href=\"apple-touch-icon.png\">",
+      "<link rel=\"manifest\" href=\"manifest.webmanifest\">"
+    ],
+    "download.html:pr_pub": [
+      "<link rel=\"icon\" href=\"favicon.ico\" sizes=\"any\">",
+      "<link rel=\"icon\" href=\"icon-192.png\" type=\"image/png\" sizes=\"192x192\">",
+      "<link rel=\"icon\" href=\"favicon.svg\" type=\"image/svg+xml\">",
+      "<link rel=\"apple-touch-icon\" href=\"apple-touch-icon.png\">",
+      "<link rel=\"manifest\" href=\"manifest.webmanifest\">"
+    ],
+    "download.html:main_src": [
+      "<link rel=\"icon\" href=\"favicon.ico\" sizes=\"any\">",
+      "<link rel=\"icon\" href=\"favicon.svg\" type=\"image/svg+xml\">",
+      "<link rel=\"apple-touch-icon\" href=\"apple-touch-icon.png\">"
+    ],
+    "download.html:main_pub": [
+      "<link rel=\"icon\" href=\"favicon.ico\" sizes=\"any\">",
+      "<link rel=\"icon\" href=\"favicon.svg\" type=\"image/svg+xml\">",
+      "<link rel=\"apple-touch-icon\" href=\"apple-touch-icon.png\">"
+    ],
+    "privacy.html:pr_src": [
+      "<link rel=\"icon\" href=\"favicon.ico\" sizes=\"any\">",
+      "<link rel=\"icon\" href=\"icon-192.png\" type=\"image/png\" sizes=\"192x192\">",
+      "<link rel=\"icon\" href=\"favicon.svg\" type=\"image/svg+xml\">",
+      "<link rel=\"apple-touch-icon\" href=\"apple-touch-icon.png\">",
+      "<link rel=\"manifest\" href=\"manifest.webmanifest\">"
+    ],
+    "privacy.html:pr_pub": [
+      "<link rel=\"icon\" href=\"favicon.ico\" sizes=\"any\">",
+      "<link rel=\"icon\" href=\"icon-192.png\" type=\"image/png\" sizes=\"192x192\">",
+      "<link rel=\"icon\" href=\"favicon.svg\" type=\"image/svg+xml\">",
+      "<link rel=\"apple-touch-icon\" href=\"apple-touch-icon.png\">",
+      "<link rel=\"manifest\" href=\"manifest.webmanifest\">"
+    ],
+    "privacy.html:main_src": [
+      "<link rel=\"icon\" href=\"favicon.ico\" sizes=\"any\">",
+      "<link rel=\"icon\" href=\"favicon.svg\" type=\"image/svg+xml\">",
+      "<link rel=\"apple-touch-icon\" href=\"apple-touch-icon.png\">"
+    ],
+    "privacy.html:main_pub": [
+      "<link rel=\"icon\" href=\"favicon.ico\" sizes=\"any\">",
+      "<link rel=\"icon\" href=\"favicon.svg\" type=\"image/svg+xml\">",
+      "<link rel=\"apple-touch-icon\" href=\"apple-touch-icon.png\">"
+    ],
+    "changelog.html:pr_src": [
+      "<link rel=\"icon\" href=\"favicon.ico\" sizes=\"any\">",
+      "<link rel=\"icon\" href=\"icon-192.png\" type=\"image/png\" sizes=\"192x192\">",
+      "<link rel=\"icon\" href=\"favicon.svg\" type=\"image/svg+xml\">",
+      "<link rel=\"apple-touch-icon\" href=\"apple-touch-icon.png\">",
+      "<link rel=\"manifest\" href=\"manifest.webmanifest\">"
+    ],
+    "changelog.html:pr_pub": [
+      "<link rel=\"icon\" href=\"favicon.ico\" sizes=\"any\">",
+      "<link rel=\"icon\" href=\"icon-192.png\" type=\"image/png\" sizes=\"192x192\">",
+      "<link rel=\"icon\" href=\"favicon.svg\" type=\"image/svg+xml\">",
+      "<link rel=\"apple-touch-icon\" href=\"apple-touch-icon.png\">",
+      "<link rel=\"manifest\" href=\"manifest.webmanifest\">"
+    ],
+    "changelog.html:main_src": [
+      "<link rel=\"icon\" href=\"favicon.ico\" sizes=\"any\">",
+      "<link rel=\"icon\" href=\"favicon.svg\" type=\"image/svg+xml\">",
+      "<link rel=\"apple-touch-icon\" href=\"apple-touch-icon.png\">"
+    ],
+    "changelog.html:main_pub": [
+      "<link rel=\"icon\" href=\"favicon.ico\" sizes=\"any\">",
+      "<link rel=\"icon\" href=\"favicon.svg\" type=\"image/svg+xml\">",
+      "<link rel=\"apple-touch-icon\" href=\"apple-touch-icon.png\">"
+    ]
+  }
+}

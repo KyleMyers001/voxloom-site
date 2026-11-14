@@ -1,0 +1,109 @@
+{
+  "before": {
+    "label": "before",
+    "page": "http://127.0.0.1:8765/index.html",
+    "requests": [
+      "http://127.0.0.1:8765/index.html",
+      "http://127.0.0.1:8765/base.css",
+      "http://127.0.0.1:8765/home.css",
+      "http://127.0.0.1:8765/favicon.svg",
+      "http://127.0.0.1:8765/favicon.ico"
+    ],
+    "icon_hits": [
+      "http://127.0.0.1:8765/favicon.svg",
+      "http://127.0.0.1:8765/favicon.ico"
+    ],
+    "links": [
+      {
+        "rel": "canonical",
+        "href": "https://voxloom.app/",
+        "type": "",
+        "sizes": ""
+      },
+      {
+        "rel": "icon",
+        "href": "http://127.0.0.1:8765/favicon.ico",
+        "type": "",
+        "sizes": "any"
+      },
+      {
+        "rel": "icon",
+        "href": "http://127.0.0.1:8765/favicon.svg",
+        "type": "image/svg+xml",
+        "sizes": ""
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "http://127.0.0.1:8765/apple-touch-icon.png",
+        "type": "",
+        "sizes": ""
+      },
+      {
+        "rel": "stylesheet",
+        "href": "http://127.0.0.1:8765/base.css",
+        "type": "",
+        "sizes": ""
+      },
+      {
+        "rel": "stylesheet",
+        "href": "http://127.0.0.1:8765/home.css",
+        "type": "",
+        "sizes": ""
+      }
+    ]
+  },
+  "after": {
+    "label": "after",
+    "page": "http://127.0.0.1:8766/index.html",
+    "requests": [
+      "http://127.0.0.1:8766/index.html",
+      "http://127.0.0.1:8766/base.css",
+      "http://127.0.0.1:8766/home.css",
+      "http://127.0.0.1:8766/favicon.svg",
+      "http://127.0.0.1:8766/favicon.ico"
+    ],
+    "icon_hits": [
+      "http://127.0.0.1:8766/favicon.svg",
+      "http://127.0.0.1:8766/favicon.ico"
+    ],
+    "links": [
+      {
+        "rel": "canonical",
+        "href": "https://voxloom.app/",
+        "type": "",
+        "sizes": ""
+      },
+      {
+        "rel": "icon",
+        "href": "http://127.0.0.1:8766/favicon.ico",
+        "type": "",
+        "sizes": "any"
+      },
+      {
+        "rel": "icon",
+        "href": "http://127.0.0.1:8766/favicon.svg",
+        "type": "image/svg+xml",
+        "sizes": ""
+      },
+      {
+        "rel": "apple-touch-icon",
+        "href": "http://127.0.0.1:8766/apple-touch-icon.png",
+        "type": "",
+        "sizes": ""
+      },
+      {
+        "rel": "stylesheet",
+        "href": "http://127.0.0.1:8766/base.css",
+        "type": "",
+        "sizes": ""
+      },
+      {
+        "rel": "stylesheet",
+        "href": "http://127.0.0.1:8766/home.css",
+        "type": "",
+        "sizes": ""
+      }
+    ]
+  },
+  "note": "Headless Chrome was pointed at the built index.html (real <head>). Network.requestWillBeSent is the capture of which icons Chrome fetched for the tab. Before and after both requested only favicon.svg and favicon.ico; icon-192.png, icon-512.png, and the manifest were not requested. chrome://favicon2 rendered a generic 16x16 placeholder in this headless environment, so it was not used as evidence."
+}
